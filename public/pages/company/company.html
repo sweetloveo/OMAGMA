@@ -1,0 +1,69 @@
+<!-- dashboard -->
+<div class="animated fadeIn " style="padding-top: 55px; padding-left: 150px;">
+    <div class="padding-xm">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="bg-white borderRadius-xs padding-xm">
+                    <div class="row marginBottom-s">
+                        <div class="col-xs-6">
+                            <div class="fontFamily-primary-bold fontSize-m display-inline-block">
+                                Company
+                            </div>
+                            <!--<input class="fontFamily-primary paddingTopBottom-xs paddingLeftRight-s bg-foreground borderWidth-0" type="text" placeholder="Search" />-->
+                        </div>
+                        <div class="col-xs-6 textAlign-right">
+                            <div ng-if="vm.user.profile.level == 'admin'" ng-click="vm.showAddCompany = true" class="button button-primary display-inline-block borderRadius-xxs" style="border-color: transparent!important; padding: 5px; width: 170px">
+                                Add Company
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="vm.user.profile.company.name == company.name || vm.user.profile.level == 'admin'|| vm.user.profile.level == 'editor'" ng-repeat="company in vm.companies"class="row margin-0 bg-foreground--hover paddingTopBottom-s borderTopWidth-1 borderStyle-solid borderColor-foreground">
+                        <div class="col-xs-6">
+                            <div class="fontFamily-primary-bold textTransform-capitilze" style="margin-top: 7px;">
+                                {{company.name}}
+                            </div>
+                        </div>
+                        <div class="col-xs-6 textAlign-right">
+                            <div ng-if="vm.user.profile.level == 'admin'" ng-click="vm.deleteCompany(company)" class="marginRight-s display-inline-block">
+                                <i class="ion-trash-a fontSize-m c-grey c-danger--hover"></i>
+                            </div>
+                            <div ui-sref="dashboard.companySingle({id: company.$id})"class="button bg-grey c-white button-m display-inline-block" style="border-color: transparent!important; padding: 1px 5px;">
+                                <i class="ion-document-text fontSize-m"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end content -->
+
+
+<!-- Add Company -->
+<div ng-show="vm.showAddCompany" class="animated fadeIn posFixTL" style="width: 100vw; height: 100vh; background-color: rgba(255,255,255,.9); padding-top: 55px; padding-left: 150px; padding-right: 280px;">
+    <div class="padding-xm">
+        <div class="bg-white padding-xm boxShadow-card borderRadius-xs borderWidth-1 borderColor-foreground borderStyle-solid centered" style="width: 400px; min-height: 100px;">
+            <div class="fontFamily-primary-bold textTransform-uppercase position-relative fontSize-xs">
+                New Company <span class="floatRight" style="margin-top:-5px"><i ng-click="vm.showAddCompany = false" class="icon ion-close-round c-grey fontSize-xm"></i>
+            </span>  </div>
+            <div class="row marginTop-xm">
+                <div class="col-xs-4">
+                    <div class="fontFamily-primary-bold fontSize-s lh-2">Name</div>
+                </div>
+                <div class="col-xs-8">
+                    <input ng-model="vm.newCompany.name" class="bg-foreground padding-xs borderWidth-0 width-100" type="text" placeholder="Enter company's name">
+                </div>
+            </div>
+            <div class="row marginTop-xm">
+                <div class="col-xs-8 col-xs-offset-4">
+                    <div ng-click="vm.addCompany(vm.newCompany)" class="button button-primary c-white button-m display-inline-block" style="border-color: transparent!important; padding: 5px;">
+                        Add
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end add company -->
+

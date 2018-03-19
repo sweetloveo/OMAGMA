@@ -1,0 +1,80 @@
+// Placeholder
+::-webkit-input-placeholder,
+:-moz-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder {
+	@extend .c-grey;
+}
+
+// Input
+.input {
+	&-group { @extend .position-relative; }
+	&.textAlign-left input { @extend .textAlign-left; }
+
+	&-full {
+		input 				{ @extend .width-100; }
+	}
+	&-m {
+		input 				{ @extend .paddingTopBottom-xs; }
+		.input-prefix { top: 7px; }
+		.input-suffix { top: 7px; }
+		i { font-size: 18px; }
+	}
+	&-l  {
+		input 				{ @extend .paddingTopBottom-s; }
+		.input-prefix { top: 11px; }
+		.input-suffix { top: 11px; }
+	}
+	input[disabled] {
+		@extend .cursor-not-allowed;
+		@extend .bg-grey-l;
+		&:hover 				{ @extend .borderColor-grey;}
+		&:active 				{ @extend .borderColor-grey; }
+		&:focus 				{ @extend .borderColor-grey; }
+		&:active:hover 	{ @extend .borderColor-grey; }
+		&:focus:hover 	{ @extend .borderColor-grey; }
+		&.danger 				{ @extend .borderColor-grey; }
+		&.invalid 			{ @extend .borderColor-grey; }
+		&.ng-invalid 		{ @extend .borderColor-grey; }
+	}
+
+	&-prefix {
+		@extend .posPinTL;
+		@extend .paddingLeftRight-s;
+		@extend .fontSize-s;
+		top: 6px;
+		i { margin-top: 1px; }
+	}
+	&-suffix {
+		@extend .posPinTR;
+		@extend .fontSize-s;
+		@extend .paddingLeftRight-s;
+		top: 6px;
+		i { margin-top: 1px; }
+	}
+  & {
+		input {
+	    @extend .paddingTopBottom-xs;
+			@extend .paddingLeftRight-s;
+	  	@extend .textAlign-center;
+	  	@extend .borderColor-grey;
+			@extend .borderWidth-1;
+			@extend .borderStyle-solid;
+			@extend .borderRadius-xxs;
+			@extend .c-grey;
+			@extend .transitionProperty-all;
+			@extend .transitionDuration-s;
+			@extend .transitionTimingFn-linear;
+			@extend .fontSize-s;
+
+			&:hover 				{ @extend .borderColor-grey;}
+			&:active 				{ @extend .borderColor-primary; }
+			&:focus 				{ @extend .borderColor-primary; }
+			&:active:hover 	{ @extend .borderColor-primary; }
+			&:focus:hover 	{ @extend .borderColor-primary; }
+			&.danger 				{ @extend .borderColor-danger; }
+			&.invalid 			{ @extend .borderColor-danger; }
+			&.ng-dirty.ng-invalid 		{ @extend .borderColor-danger; }
+	  }
+	}
+}

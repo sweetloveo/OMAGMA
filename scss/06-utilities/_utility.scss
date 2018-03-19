@@ -1,0 +1,23 @@
+.cursor-pointer { cursor: pointer; }
+.cursor-not-allowed { cursor: not-allowed; }
+.cursor-none { cursor: none; }
+.cursor-default { cursor: default; }
+
+.verticleAlign-top { vertical-align: top; }
+.verticleAlign-middle { vertical-align: middle; }
+.verticleAlign-bottom { vertical-align: bottom; }
+.verticallyCentered {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.overflow-auto { overflow: auto; }
+.overflow-hidden { overflow: hidden; }
+.overflowX-scroll { overflow-x: scroll; }
+.overflowY-scroll { overflow-Y: scroll; }
+
+.whiteSpace-nowrap { white-space: nowrap; }
+
+.floatRight { float: right; }
+.floatLeft { float: left; }
+.floatNone { float: none; }

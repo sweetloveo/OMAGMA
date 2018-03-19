@@ -1,0 +1,194 @@
+<div class="animated fadeIn " style="padding-top: 50px; padding-left: 150px;">
+	<div class="padding-xm">
+		<div class="row marginBottom-xm">
+			<div class="col-xs-12">
+				<div ui-sref="dashboard.companySingle({id: vm.company_id})" class="display-inline-block button button-m button-primary fontSize-xxs"
+				style="border-color: transparent !important;
+						width: 100px;">
+					<span style="opacity: .8;
+						display: flex;
+						justify-content: center;
+						align-items: center;">
+						<i class="ion-arrow-left-c fontSize-xm marginRight-s"></i> BACK
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="bg-white borderRadius-xs padding-xm">
+					<div class="row marginBottom-s">
+						<div class="col-xs-4">
+							<div class="fontFamily-primary-bold fontSize-m display-inline-block textTransform-capitilze">
+								LINE: <a style="color: #2b8937;">{{ vm.group.name }}</a>
+							</div>
+						</div>
+						<div class="col-xs-4">
+								<div class="input position-relative display-inline-block width-100" >
+									<input ng-model="vm.gearSearch" type="text" placeholder="Search" class="textAlign-center" style="text-align: center; padding: 8px 5px;">
+								</div>
+							</div>
+						<div class="col-xs-2 textAlign-right">
+							<div ng-if="vm.user.profile.level === 'admin'"  ui-sref="dashboard.gearselect({id: vm.company_id, group: vm.group_id})" class="button display-inline-block textTransform-uppercase" style="width: 150px; color:#2a65ff; border: 1px solid #2a65ff !important;">
+								<i class="ion-plus-round"></i> Add
+							</div>
+						</div>
+						<div class="col-xs-2 textAlign-right">
+							<div ng-print print-element-id="print" class="button button-m display-inline-block textTransform-uppercase" style="width: 150px; color:#2a65ff; border: 1px solid #2a65ff !important;">
+								<i class="ion-printer"></i> Print
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<table class="width-100 sticky" id="print">
+								<thead class="fontWeight-7 textAlign-left">
+								<th ng-click="vm.setGearOrderBy('data.groupno')" class="cursor-pointer padding-s">
+									<div>
+										Status
+										<i
+												class="c-grey fontSize-xxs"></i>
+									</div>
+								</th>
+								<th ng-click="vm.setGearOrderBy('data.groupno')" class="cursor-pointer padding-s">
+									<div>
+										Group
+										<i
+												ng-show="vm.gearOrderBy.indexOf('data.groupno') >= 0"
+												ng-class="{'ion-arrow-down-b': vm.gearOrderBy === 'data.groupno',
+											'ion-arrow-up-b': vm.gearOrderBy !== 'data.groupno'}"
+												class="c-grey fontSize-xxs"></i>
+									</div>
+								</th>
+									<th ng-click="vm.setGearOrderBy('data.machineno')"class="cursor-pointer padding-s" style="width: 150px;">
+										<div>
+											Machine No.
+											<i
+											ng-show="vm.gearOrderBy.indexOf('data.machineno') >= 0"
+											ng-class="{'ion-arrow-down-b': vm.gearOrderBy === 'data.machineno',
+											'ion-arrow-up-b': vm.gearOrderBy !== 'data.machineno'}"
+											class="c-grey fontSize-xxs"></i>
+										</div>
+									</th>
+									<th ng-click="vm.setGearOrderBy('data.type')" class="cursor-pointer padding-s">
+										<div>
+											Type
+											<i
+											ng-show="vm.gearOrderBy.indexOf('data.type') >= 0"
+											ng-class="{'ion-arrow-down-b': vm.gearOrderBy === 'data.type',
+											'ion-arrow-up-b': vm.gearOrderBy !== 'data.type'}"
+											class="c-grey fontSize-xxs"></i>
+										</div>
+									</th>
+									<th ng-click="vm.setGearOrderBy('data.power')" class="cursor-pointer padding-s">
+										<div>
+											Power
+											<i
+											ng-show="vm.gearOrderBy.indexOf('data.power') >= 0"
+											ng-class="{'ion-arrow-down-b': vm.gearOrderBy === 'data.power',
+											'ion-arrow-up-b': vm.gearOrderBy !== 'data.power'}"
+											class="c-grey fontSize-xxs"></i>
+										</div>
+									</th>
+									<th ng-click="vm.setGearOrderBy('data.ratio')" class="cursor-pointer padding-s">
+										<div>
+											Ratio
+											<i
+											ng-show="vm.gearOrderBy.indexOf('data.ratio') >= 0"
+											ng-class="{'ion-arrow-down-b': vm.gearOrderBy === 'data.ratio',
+											'ion-arrow-up-b': vm.gearOrderBy !== 'data.ratio'}"
+											class="c-grey fontSize-xxs"></i>
+										</div>
+									</th>
+									<th ng-click="vm.setGearOrderBy('data.speed')" class="cursor-pointer padding-s">
+										<div>
+											Speed
+											<i
+											ng-show="vm.gearOrderBy.indexOf('data.speed') >= 0"
+											ng-class="{'ion-arrow-down-b': vm.gearOrderBy === 'data.speed',
+											'ion-arrow-up-b': vm.gearOrderBy !== 'data.speed'}"
+											class="c-grey fontSize-xxs"></i>
+										</div>
+									</th>
+									<th class="textAlign-center padding-s">
+										<div>
+											Description
+										</div>
+									</th>
+									<th class="textAlign-center padding-s">
+										<div>
+											Maintenance history
+										</div>
+									</th>
+									<th class="textAlign-center padding-s">
+										<div>
+											Checkup history
+										</div>
+									</th>
+								</thead>
+								<tbody><tr ng-if="!vm.gearmotors[0].data.type"  >
+									<td class="padding-s ">
+										<span ></span>
+									</td>
+									<td class="padding-s ">
+										<span >No Machine </span>
+									</td>
+									<td class="padding-s ">
+										<span ></span>
+									</td>
+								</tr>
+									<tr ng-if="gearmotor" ng-repeat="gearmotor in vm.gearmotors | orderBy:vm.gearOrderBy || 'data.machineno' | filter:vm.gearSearch" class="bg-foreground--hover">
+										<td class="padding-s">
+											<span ng-if="gearmotor.data.activate === 'False'" class="txt-overflow" style="font-weight: bold;color: #f60000" >ผิดพลาด</span>
+											<span ng-if="gearmotor.data.activate === 'True'" class="txt-overflow" style="font-weight: bold;color: #40a200" >ปกติ</span>
+										</td>
+										<td class="padding-s">
+											<span class="txt-overflow" >{{ gearmotor.data.groupno }}</span>
+										</td>
+										<td class="padding-s" style="width: 150px;">
+											<span class="txt-overflow" >{{ gearmotor.data.machineno }}</span>
+										</td>
+										<td class="padding-s">
+											<span class="txt-overflow" >{{ gearmotor.data.type }}</span>
+										</td>
+										<td class="padding-s">
+											<span class="txt-overflow" >{{ gearmotor.data.power }}</span>
+										</td>
+										<td class="padding-s">
+											<span class="txt-overflow" >{{ gearmotor.data.ratio }}</span>
+										</td>
+										<td class="padding-s">
+											<span class="txt-overflow" >{{ gearmotor.data.speed }}</span>
+										</td>
+										<td class="textAlign-center padding-s">
+											<a ui-sref="dashboard.machineDescription({id: vm.company_id, group: vm.group_id, machineId: gearmotor.id})" class="link link-primary">
+												View
+											</a>
+										</td>
+										<td class="textAlign-center padding-s">
+											<a ng-show="gearmotor.maintenance_url" ui-sref="dashboard.machineMaintenance({id: vm.company_id, group: vm.group_id, machine: gearmotor.id})"  class="link link-primary">
+												Files
+											</a>
+											<span ng-show="!gearmotor.maintenance_url" class="c-grey">
+												No file
+											</span>
+										</td>
+										<td class="textAlign-center padding-s">
+											<a ng-show="gearmotor.checkup_url"  ui-sref="dashboard.machineCheckup({id: vm.company_id, group: vm.group_id, machine: gearmotor.id})" class="link link-primary">
+												Files
+											</a>
+											<span ng-show="!gearmotor.checkup_url" class="c-grey">
+												No file
+											</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

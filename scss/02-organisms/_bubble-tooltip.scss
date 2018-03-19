@@ -1,0 +1,38 @@
+.bubble-tooltip {
+  @extend .position-absolute;
+  @extend .borderRadius-xxs;
+  @extend .borderWidth-1;
+  @extend .borderColor-refinn;
+  @extend .borderStyle-solid;
+  @extend .paddingTopBottom-s;
+  @extend .paddingLeftRight-xm;
+  @extend .fontFamily-primary;
+  @extend .fontSize-l;
+  @extend .lh-1;
+  @extend .textAlign-center;
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 100px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+  }
+  &:before {
+    @extend .zIndex-xs;
+    top: 83px;
+    border-color: #f1f9ff transparent transparent transparent;
+    border-width: 14px;
+    border-left-width: 10px;
+    border-right-width: 10px;
+  }
+  &:after {
+    top: 84px;
+    border-color: #2196f3 transparent transparent transparent;
+    border-width: 14px;
+    border-left-width: 10px;
+    border-right-width: 10px;
+  }
+}

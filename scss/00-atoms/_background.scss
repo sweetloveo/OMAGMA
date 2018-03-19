@@ -1,0 +1,30 @@
+@each $cc in $colors {
+  $cc-type: nth($cc,1);
+  $cc-value: nth($cc,2);
+
+	.bg-#{$cc-type} {
+    & { background-color: #{$cc-value}; }
+    &--hover:hover { background-color: #{$cc-value}; }
+
+    @each $c-scale in $colors-scale {
+      $sc-type: nth($c-scale,1);
+      $sc-value: nth($c-scale,2);
+      @if ($sc-type == lt) or ($sc-type == l) {
+        &-#{$sc-type} { background-color: lighten($cc-value,$sc-value); }
+        &-#{$sc-type}--hover:hover { background-color: lighten($cc-value,$sc-value); }
+      } @else if ($sc-type == d) or ($sc-type == dk) {
+        &-#{$sc-type} { background-color: darken($cc-value,$sc-value); }
+        &-#{$sc-type}--hover:hover { background-color: darken($cc-value,$sc-value); }
+      }
+    }
+  }
+}
+
+.background {
+	&Pos-center 		      { background-position: center; }
+	&Pos-top 			        { background-position: top; }
+	&Pos-bottom 		      { background-position: bottom; }
+	&Size-cover 		      { background-size: cover; }
+	&Repeat-no-repeat 		{ background-repeat: no-repeat;}
+  &Attachment-fixed     { background-attachment: fixed; }
+}

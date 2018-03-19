@@ -1,0 +1,29 @@
+.blog-card {
+  & {
+    @extend .position-relative;
+    .blog-image {
+      @extend .position-relative;
+      padding-top: 28%;
+      span {
+        @extend .position-relative;
+        @extend .zIndex-s;
+        @extend .textAlign-center;
+        @extend .display-none;
+      }
+    }
+  }
+  &:hover {
+    .blog-image {
+      span { @extend .display-block; }
+      &:after {
+        @extend .display-block;
+        @extend .posPinTL;
+        @extend .width-100;
+        @extend .c-white;
+        height: 230px;
+        content: "";
+        background-color: rgba(0,0,0,.5);
+      }
+    }
+  }
+}

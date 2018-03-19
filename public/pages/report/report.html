@@ -1,0 +1,214 @@
+<!-- dashboard -->
+<div class="animated fadeIn " style="padding-top: 55px; padding-left: 150px;">
+    <div class="padding-xm">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="bg-white borderRadius-xs padding-xm">
+                    <div class="row marginBottom-s">
+                        <div class="col-xs-6">
+
+                            <div class="fontFamily-primary-bold fontSize-m display-inline-block">
+                                Report
+                            </div>
+
+                            <!--<input class="fontFamily-primary paddingTopBottom-xs paddingLeftRight-s bg-foreground borderWidth-0" type="text" placeholder="Search" />-->
+                        </div>
+                    </div>
+                    <div class="bg-white padding-xm  borderRadius-xs borderWidth-1 borderColor-foreground borderStyle-solid " style="width: 800px; min-height: 100px;">
+                        <div class="fontFamily-primary-bold c-primary fontStyle-bold textTransform-uppercase position-relative fontSize-xs">
+                            โปรดเลือกช่วงเวลาที่ต้องการ <span class="floatRight" style="margin-top:-5px">
+                        </div>
+                        <form ng-submit="vm.process(vm.report);">
+                        <div class="row marginTop-xm">
+                            <div class="col-xs-3">
+                                <div class="fontFamily-primary-bold fontSize-s lh-2">เวลาเริ่มต้น</div>
+                            </div>
+                            <div class="col-xs-9">
+                                <datepicker date-format="MM/dd/yyyy">
+
+                                    <input required ng-model="vm.report.start" class="bg-foreground padding-xs borderWidth-0 width-100" type="text" placeholder="เลือกวันที่เริ่มต้น"/>
+                                </datepicker>
+                            </div>
+                        </div>
+                        <div class="row marginTop-xm">
+                            <div class="col-xs-3">
+                                <div class="fontFamily-primary-bold fontSize-s lh-2">เวลาสิ้นสุด</div>
+                            </div>
+                            <div class="col-xs-9">
+                                <datepicker date-format="MM/dd/yyyy">
+
+                                    <input required ng-model="vm.report.end" class="bg-foreground padding-xs borderWidth-0 width-100" type="text" placeholder="เลือกวันที่สิ้นสุด"/>
+                                </datepicker>
+                            </div>
+                        </div>
+                        <div class="row marginTop-xm">
+                            <div class="col-xs-3">
+                                <div class="fontFamily-primary-bold fontSize-s lh-2">บริษัท</div>
+                            </div>
+                            <div class="col-xs-9">
+                                <select ng-options="company as company.name for company in vm.companies track by company.name" ng-model="vm.report.company">
+                                    <option value="" selected disabled>-- Select company type --</option>
+                                </select>
+                            </div>
+                        </div>
+                            <div class="row marginTop-xm">
+                                <div class="col-xs-3">
+                                    <div class="fontFamily-primary-bold fontSize-s lh-2">ประเภท</div>
+                                </div>
+                                <div class="col-xs-9">
+                                    <select required ng-options="level for level in ['checkup','maintenance'] track by level" ng-model="vm.report.key">
+                                        <option value="" selected disabled>-- Select type type --</option>
+                                    </select>
+                                </div>
+                            </div>
+                        <div class="row marginTop-xm">
+                            <div class="col-xs-9 col-xs-offset-3">
+                                <button type="submit" class="button button-primary c-white button-m display-inline-block" style="border-color: transparent!important; padding: 5px;">
+                                    Search
+                                </button>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table id="maintenance" class="width-100 sticky" style="display: none" >
+    <thead class="fontWeight-7 textAlign-left">
+    <th class="cursor-pointer textAlign-left padding-s">
+        Maintenance history
+
+    </th>
+    <th  class="cursor-pointer textAlign-left padding-s">
+        Uploaded on
+
+    <th  class="cursor-pointer textAlign-left padding-s">
+        Maintainer
+
+    </th>
+    <th  class="cursor-pointer textAlign-left padding-s">
+        Cause
+
+    </th>
+    <th class="cursor-pointer textAlign-left padding-s">
+        Date-Time
+
+    </th>
+    </thead>
+    <tbody>
+    <tr ng-show="vm.maintenance" ng-repeat="(key, maintenance) in vm.maintenance | toArray:false " class="bg-foreground--hover">
+        <td class="textAlign-left padding-s">
+            {{maintenance.name}}
+        </td>
+        <td class="textAlign-left padding-s">
+            {{maintenance.timestamp}}
+        </td>
+        <td class="textAlign-left padding-s">
+            {{maintenance.maintainer}}
+        </td>
+        <td class="textAlign-left padding-s">
+            {{maintenance.cause}}
+        </td>
+        <td class="textAlign-left padding-s">
+            {{maintenance.date}}
+        </td>
+    </tr>
+    </tbody>
+</table>
+<table id="checkup" class="width-100 sticky" style="display: none" >
+
+    <thead class="fontWeight-7 textAlign-left">
+    <th  class="cursor-pointer textAlign-left padding-s">
+        Checkup history
+
+    </th>
+    <th class="cursor-pointer textAlign-left padding-s">
+        Uploaded on
+
+    </th>
+    <th  class="cursor-pointer textAlign-left padding-s">
+        Temperature
+
+    </th>
+    <th class="cursor-pointer textAlign-left padding-s">
+        Oil
+
+    <th  class="cursor-pointer textAlign-left padding-s">
+        Amp
+
+    </th>
+    <th  class="cursor-pointer textAlign-left padding-s">
+        Checker
+
+    </th>
+    <th  class="cursor-pointer textAlign-left padding-s">
+        Date-Time
+
+    </th>
+
+    </thead>
+    <tbody>
+    <tr ng-show="vm.checkup" ng-repeat="(key, checkup) in vm.checkup | toArray:false " class="bg-foreground--hover">
+        <td class="textAlign-left padding-s">
+            {{checkup.name}}
+        </td>
+        <td class="textAlign-left padding-s">
+            {{checkup.timestamp}}
+        </td>
+        <td class="textAlign-left padding-s">
+            {{checkup.temp}}
+        </td>
+        <td class="textAlign-left padding-s">
+            {{checkup.oil}}
+        </td>
+        <td class="textAlign-left padding-s">
+            {{checkup.amp}}
+        </td>
+        <td class="textAlign-left padding-s">
+            {{checkup.checker}}
+        </td>
+        <td class="textAlign-left padding-s">
+            {{checkup.date}}
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+<!-- end content -->
+<div ng-show="vm.showPrint" class="animated fadeIn posFixTL" style="width: 100vw; height: 100vh; background-color: rgba(255,255,255,.9); padding-top: 55px; padding-left: 150px; padding-right: 280px;">
+    <div class="padding-xm">
+        <div class="bg-white padding-xm boxShadow-card borderRadius-xs borderWidth-1 borderColor-foreground borderStyle-solid centered" style="width: 400px; min-height: 100px;">
+            <div class="fontFamily-primary-bold textTransform-uppercase position-relative fontSize-m textAlign-center">
+                <span class="floatRight" style="margin-top:-5px"><i ng-click="vm.showPrint = false;vm.maintenance=false;vm.checkup=false;" class="icon ion-close-round c-grey fontSize-xm"></i></span><div class="c-success">Success!</div>  Ready to print
+            </div>
+            <div class="row marginTop-xm">
+                <div class="col-xs-4">
+                    <div class="fontFamily-primary-bold fontSize-s lh-2">Found</div>
+                </div>
+                <div class="col-xs-8">
+                    <input disabled ng-if="vm.maintenance" class="bg-foreground padding-xs borderWidth-0 width-100" type="text" placeholder="{{vm.maintenance.length}} data.">
+                    <input disabled ng-if="vm.checkup" class="bg-foreground padding-xs borderWidth-0 width-100" type="text" placeholder="{{vm.checkup.length}} data.">
+                </div>
+            </div>
+            <div class="row marginTop-xm">
+                <div class="col-xs-8 col-xs-offset-4">
+                    <div ng-show="vm.maintenance"  ng-print print-element-id="maintenance" class="button button-primary c-white button-m display-inline-block" style="border-color: transparent!important; padding: 5px;">
+                        Print
+                    </div>
+                    <div ng-show="vm.checkup" ng-print print-element-id="checkup" class="button button-primary c-white button-m display-inline-block" style="border-color: transparent!important; padding: 5px;">
+                        Print
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Company -->
+
+<!-- end add company -->
+

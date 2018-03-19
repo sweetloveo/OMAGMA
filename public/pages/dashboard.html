@@ -1,0 +1,47 @@
+<!-- menubar -->
+<div class="menubar position-fixed bg-white fontFamily-primary-bold c-grey zIndex-m borderColor-foreground borderRightWidth-1 borderStyle-solid" style="width: 150px; height: 100vh;">
+    <div class="padding-s fontSize-m c-grey-d textAlign-center borderBottomWidth-1 borderColor-foreground borderStyle-solid" style="letter-spacing: 1px">
+        OMAGMA
+    </div>
+    <div class="padding-xm">
+        <div class="textTransform-uppercase fontSize-xs">
+            menu
+        </div>
+        <div ui-sref="dashboard.company" ui-sref-active="link-primary" class="menu-item link paddingTopBottom-xs marginTop-xs">
+            <i  class="icon ion-android-home fontSize-xm display-inline-block" style="width: 23px"></i>
+            <span  class="fontSize-s">Company</span>
+        </div>
+        <div ng-show="vm.user.profile.level === 'admin'" ui-sref="dashboard.users" ui-sref-active="link-primary" class="menu-item link paddingTopBottom-xs marginTop-xs">
+            <i  class="icon ion-person-stalker fontSize-xm display-inline-block" style="width: 23px"></i>
+            <span  class="fontSize-s">Users</span>
+        </div>
+        <div ng-show="vm.user.profile.level === 'admin'" ui-sref="dashboard.report" ui-sref-active="link-primary" class="menu-item link paddingTopBottom-xs marginTop-xs">
+            <i  class="icon ion-ios-printer fontSize-xm display-inline-block" style="width: 23px"></i>
+            <span  class="fontSize-s">Report</span>
+        </div>
+        <!-- <div ui-sref="dashboard.gear" class="menu-item link paddingTopBottom-xs marginTop-xs">
+            <i  class="ion-gear-b fontSize-xm display-inline-block c-grey" style="width: 23px"></i>
+            <span  class="fontSize-s c-grey">Gears</span>
+        </div> -->
+        <div ng-click="vm.logout()" class="menu-item link paddingTopBottom-xs marginTop-xl">
+            <i class="icon ion-log-out c-grey fontSize-xm display-inline-block" style="width: 23px"></i>
+            <span class="c-grey fontFamily-primary fontSize-s">Logout</span>
+        </div>
+    </div>
+</div>
+<!-- end menubar -->
+
+<!-- navbar -->
+<div class="navbar posFixTL bg-white padding-xs width-100 zIndex-s borderBottomWidth-1 borderColor-foreground borderStyle-solid" style="padding-left: 150px; height: 55px">
+    <div class="row paddingLeftRight-xm" style="padding-top: 10px; padding-bottom: 10px;">
+        <div class="col-xs-12">
+            <div class="fontFamily-primary-bold fontSize-s textTransform-capitilze">
+                {{vm.page}}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end navbar -->
+
+<div ui-view></div>
+

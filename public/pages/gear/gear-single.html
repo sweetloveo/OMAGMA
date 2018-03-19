@@ -1,0 +1,520 @@
+
+<!-- selectedGear -->
+<div class="animated fadeIn" style="padding-top: 55px; padding-left: 150px;">
+    <div class="padding-xm">
+				<div class="row marginBottom-xm">
+            <div class="col-xs-12">
+                <div ui-sref="dashboard.gearselect({id: vm.company_id, group: vm.group_id})" class="button button-m button-primary fontSize-xxs"
+								style="border-color: transparent !important;
+										width: 100px;">
+									<span style="opacity: .8;
+										display: flex;
+										justify-content: center;
+										align-items: center;">
+										<i class="ion-arrow-left-c fontSize-xm marginRight-s"></i> BACK
+									</span>
+								</div>
+            </div>
+        </div>
+        <form ng-submit="vm.addGear()" class="row">
+            <div class="col-sm-8 col-md-9 col-xs-12">
+                <div class="bg-white borderRadius-xs padding-xm">
+                    <div class="row marginBottom-s">
+                        <div class="col-xs-6">
+                            <div class="fontFamily-primary-bold fontSize-m display-inline-block">
+                                GEARMOTOR NAME :: {{ vm.gear.gearType + ' ' + vm.gear.motorType }}
+                            </div>
+                            <!--<input required class="fontFamily-primary paddingTopBottom-xs paddingLeftRight-s bg-foreground borderWidth-0" type="text" placeholder="Search" />-->
+                        </div>
+                        <div class="col-xs-6 textAlign-right">
+
+                        </div>
+                    </div>
+										<div class="margin-0 borderTopWidth-1 borderBottomWidth-1 borderStyle-solid borderColor-foreground">
+											<div class="row paddingTopBottom-s">
+												<div class="col-xs-12">
+													<div class="select select-m">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">drive type</label>
+														</br>
+														<select ng-model="vm.gear.driveType">
+															<option value="" selected disabled>-- Select Drive type --</option>
+															<option value="Gearmotor">Gearmotor</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="row paddingTopBottom-s">
+												<div class="col-xs-4">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															Gear Unit Design
+														</label>
+														</br>
+														<input-dropdown
+																allow-custom-input="true" input-name="Gear-unit" input-required="true" selected-item="vm.gear.gearUnitDesign" default-dropdown-items="vm.GearunitOption.data" item-selected-method="vm.selectstring(item,'GearunitOption')"
+																filter-list-method="vm.filterStringList(userInput,vm.GearunitOption.data,'GearunitOption')" >
+														</input-dropdown>
+
+													</div>
+
+												</div>
+												<div class="col-xs-4">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															Gear Unit Size
+														</label>
+														</br>
+														<input-dropdown
+																allow-custom-input="true" input-name="gearUnitSize" input-required="true" selected-item="vm.gear.gearUnitSize" default-dropdown-items="vm.gearUnitSizeOption.data" item-selected-method="vm.selectstring(item,'gearUnitSize')"
+																filter-list-method="vm.filterStringList(userInput,vm.gearUnitSizeOption.data,'gearUnitSize')" >
+														</input-dropdown>
+													</div>
+												</div>
+											</div>
+											<div class="row paddingTopBottom-s">
+												<div class="col-xs-4">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															Gear Designation
+														</label>
+														</br>
+														<input required ng-model="vm.gear.gearDesignation" type="text" disabled>
+													</div>
+												</div>
+												<div class="col-xs-4">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															Gear Ratio
+														</label>
+														</br>
+														<input-dropdown
+																allow-custom-input="true" input-name="gearUnitSize" input-required="true" selected-item="vm.gear.gearRatio" default-dropdown-items="vm.gearRatioOption.data" item-selected-method="vm.selectstring(item,'gearRatio')"
+																filter-list-method="vm.filterStringList(userInput,vm.gearRatioOption.data,'gearRatio')" >
+														</input-dropdown>
+													</div>
+												</div>
+												<div class="col-xs-4">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															Gear Max. PERMITTED TORQUE (NM)
+														</label>
+														</br>
+														<input-dropdown
+																allow-custom-input="true" input-name="gearUnitSize" input-required="true" selected-item="vm.gear.gearTorque" default-dropdown-items="vm.gearTorqueOption.data" item-selected-method="vm.selectstring(item,'gearTorque')"
+																filter-list-method="vm.filterStringList(userInput,vm.gearTorqueOption.data,'gearTorque')" >
+														</input-dropdown>
+													</div>
+												</div>
+											</div>
+											<div class="row paddingTopBottom-s">
+												<div class="col-xs-4">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															Gear Build-in type
+														</label>
+														</br>
+														<input-dropdown
+																allow-custom-input="true" input-name="gearBuildinType" input-required="true" selected-item="vm.gear.gearBuildinType" default-dropdown-items="vm.gearBuildinTypeOption.data" item-selected-method="vm.selectstring(item,'gearBuildinType')"
+																filter-list-method="vm.filterStringList(userInput,vm.gearBuildinTypeOption.data,'gearBuildinType')" >
+														</input-dropdown>
+													</div>
+												</div>
+												<div class="col-xs-4">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															Gear type
+														</label>
+														</br>
+														<input required ng-change="vm.updateGearBuildinType()" ng-model="vm.gear.gearType" type="text" disabled>
+													</div>
+												</div>
+											</div>
+											<div class="row paddingTopBottom-s">
+												<div class="col-xs-4">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															Hollow or Output Shaft (mm)
+														</label>
+														</br>
+														<input-dropdown
+																allow-custom-input="true" input-name="gearHollowOrOutputShaft" input-required="true" selected-item="vm.gear.gearHollowOrOutputShaft" default-dropdown-items="vm.gearHollowOrOutputShaftOption.data" item-selected-method="vm.selectstring(item,'gearHollowOrOutputShaft')"
+																filter-list-method="vm.filterStringList(userInput,vm.gearHollowOrOutputShaftOption.data,'gearHollowOrOutputShaft')" >
+														</input-dropdown>
+													</div>
+												</div>
+												<div class="col-xs-4">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															OUTPUT FLANGE DIA. (MM)
+														</label>
+														</br>
+														<input-dropdown
+																allow-custom-input="true" input-name="gearOutputFlange" input-required="true" selected-item="vm.gear.gearOutputFlange" default-dropdown-items="vm.gearOutputFlangeOption.data" item-selected-method="vm.selectstring(item,'gearOutputFlange')"
+																filter-list-method="vm.filterStringList(userInput,vm.gearOutputFlangeOption.data,'gearOutputFlange')" >
+														</input-dropdown>
+													</div>
+												</div>
+												<div class="col-xs-4">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															DRIVE FLANGE DIA. (MM)
+														</label>
+														</br>
+														<input-dropdown
+																allow-custom-input="true" input-name="gearDriveFlange" input-required="true" selected-item="vm.gear.gearDriveFlange" default-dropdown-items="vm.gearDriveFlangeOption.data" item-selected-method="vm.selectstring(item,'gearDriveFlange')"
+																filter-list-method="vm.filterStringList(userInput,vm.gearDriveFlangeOption.data,'gearDriveFlange')" >
+														</input-dropdown>
+													</div>
+												</div>
+											</div>
+											<div class="row paddingTopBottom-s">
+												<div class="col-xs-4">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															GEAR OPTION
+														</label>
+														</br>
+														<input-dropdown
+																allow-custom-input="true" input-name="gearOption" input-required="true" selected-item="vm.gear.gearOption" default-dropdown-items="vm.gearOptionOption.data" item-selected-method="vm.selectstring(item,'gearOption')"
+																filter-list-method="vm.filterStringList(userInput,vm.gearOptionOption.data,'gearOption')" >
+														</input-dropdown>
+													</div>
+												</div>
+												<div class="col-xs-4">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															EFFICIENCY
+														</label>
+														</br>
+														<input-dropdown
+																allow-custom-input="true" input-name="effic" input-required="true" selected-item="vm.gear.effic" default-dropdown-items="vm.efficOption.data" item-selected-method="vm.selectstring(item,'effic')"
+																filter-list-method="vm.filterStringList(userInput,vm.efficOption.data,'effic')" >
+														</input-dropdown>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="margin-0 borderTopWidth-1 borderBottomWidth-1 borderStyle-solid borderColor-foreground">
+											<div class="row paddingTopBottom-s">
+												<div class="col-xs-4">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															MOTOR DESIGN
+														</label>
+														</br>
+														<input-dropdown
+																allow-custom-input="true" input-name="motorDesign" input-required="true" selected-item="vm.gear.motorDesign" default-dropdown-items="vm.motorDesignOption.data" item-selected-method="vm.selectstring(item,'motorDesign')"
+																filter-list-method="vm.filterStringList(userInput,vm.motorDesignOption.data,'motorDesign')" >
+														</input-dropdown>
+													</div>
+												</div>
+												<div class="col-xs-4">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															MOTOR FRAME SIZE
+														</label>
+														</br>
+														<input-dropdown
+																allow-custom-input="true" input-name="motorFrameSize" input-required="true" selected-item="vm.gear.motorFrameSize" default-dropdown-items="vm.motorFrameSizeOption.data" item-selected-method="vm.selectstring(item,'motorFrameSize')"
+																filter-list-method="vm.filterStringList(userInput,vm.motorFrameSizeOption.data,'motorFrameSize')" >
+														</input-dropdown>
+													</div>
+												</div>
+												<div class="col-xs-4">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															NUMBER OF POLE
+														</label>
+														</br>
+														<input-dropdown
+																allow-custom-input="true" input-name="motorPole" input-required="true" selected-item="vm.gear.motorPole" default-dropdown-items="vm.motorPoleOption.data" item-selected-method="vm.selectstring(item,'motorPole')"
+																filter-list-method="vm.filterStringList(userInput,vm.motorPoleOption.data,'motorPole')" >
+														</input-dropdown>
+													</div>
+												</div>
+											</div>
+											<div class="row paddingTopBottom-s">
+												<div class="col-xs-4">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															MOTOR DESIGNATION
+														</label>
+														</br>
+														<input required ng-change="vm.updateMotorType()" ng-model="vm.gear.motorDesignation" type="text" disabled>
+													</div>
+												</div>
+												<div class="col-xs-4">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															MOTOR POWER (KW)
+														</label>
+														</br>
+														<input-dropdown
+																allow-custom-input="true" input-name="motorPower" input-required="true" selected-item="vm.gear.motorPower" default-dropdown-items="vm.motorPowerOption.data" item-selected-method="vm.selectstring(item,'motorPower')"
+																filter-list-method="vm.filterStringList(userInput,vm.motorPowerOption.data,'motorPower')" >
+														</input-dropdown>
+													</div>
+												</div>
+												<div class="col-xs-2">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															VOLTAGE (D) (V)
+														</label>
+														</br>
+														<input-dropdown
+																allow-custom-input="true" input-name="motorVoltageD" input-required="true" selected-item="vm.gear.motorVoltageD" default-dropdown-items="vm.motorVoltageDOption.data" item-selected-method="vm.selectstring(item,'motorVoltageD')"
+																filter-list-method="vm.filterStringList(userInput,vm.motorVoltageDOption.data,'motorVoltageD')" >
+														</input-dropdown>
+													</div>
+												</div>
+												<div class="col-xs-2">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															VOLTAGE (Y) (V)
+														</label>
+														</br>
+														<input-dropdown
+																allow-custom-input="true" input-name="motorVoltageY" input-required="true" selected-item="vm.gear.motorVoltageY" default-dropdown-items="vm.motorVoltageYOption.data" item-selected-method="vm.selectstring(item,'motorVoltageY')"
+																filter-list-method="vm.filterStringList(userInput,vm.motorVoltageYOption.data,'motorVoltageY')" >
+														</input-dropdown>
+													</div>
+												</div>
+											</div>
+											<div class="row paddingTopBottom-s">
+												<div class="col-xs-4">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															RATED CURRENT (at 400 v) (A)
+														</label>
+														</br>
+														<input-dropdown
+																allow-custom-input="true" input-name="motorCurrent" input-required="true" selected-item="vm.gear.motorCurrent" default-dropdown-items="vm.motorCurrentOption.data" item-selected-method="vm.selectstring(item,'motorCurrent')"
+																filter-list-method="vm.filterStringList(userInput,vm.motorCurrentOption.data,'motorCurrent')" >
+														</input-dropdown>
+													</div>
+												</div>
+												<div class="col-xs-4">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															MOTOR SPEED (RPM)
+														</label>
+														</br>
+														<input-dropdown
+																allow-custom-input="true" input-name="motorSpeed" input-required="true" selected-item="vm.gear.motorSpeed" default-dropdown-items="vm.motorSpeedOption.data" item-selected-method="vm.selectstring(item,'motorSpeed')"
+																filter-list-method="vm.filterStringList(userInput,vm.motorSpeedOption.data,'motorSpeed')" >
+														</input-dropdown>
+													</div>
+												</div>
+											</div>
+											<div class="row paddingTopBottom-s">
+												<div class="col-xs-4">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															MOTOR BUILD-IN TYPE
+														</label>
+														</br>
+														<input-dropdown
+																allow-custom-input="true" input-name="motorBuildinType" input-required="true" selected-item="vm.gear.motorBuildinType" default-dropdown-items="vm.motorBuildinTypeOption.data" item-selected-method="vm.selectstring(item,'motorBuildinType')"
+																filter-list-method="vm.filterStringList(userInput,vm.motorBuildinTypeOption.data,'motorBuildinType')" >
+														</input-dropdown>
+													</div>
+												</div>
+												<div class="col-xs-4">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															MOTOR TYPE
+														</label>
+														</br>
+														<input required ng-model="vm.gear.motorType" type="text" disabled>
+													</div>
+												</div>
+												<div class="col-xs-4">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															MOTOR SHAFT
+														</label>
+														</br>
+														<input-dropdown
+																allow-custom-input="true" input-name="motorShaft" input-required="true" selected-item="vm.gear.motorShaft" default-dropdown-items="vm.motorShaftOption.data" item-selected-method="vm.selectstring(item,'motorShaft')"
+																filter-list-method="vm.filterStringList(userInput,vm.motorShaftOption.data,'motorShaft')" >
+														</input-dropdown>
+													</div>
+												</div>
+											</div>
+											<div class="row paddingTopBottom-s">
+												<div class="col-xs-4">
+													<div class="input">
+														<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+															MOTOR OPTION
+														</label>
+														</br>
+														<input-dropdown
+																allow-custom-input="true" input-name="motorOption" input-required="true" selected-item="vm.gear.motorOption" default-dropdown-items="vm.motorOptionOption.data" item-selected-method="vm.selectstring(item,'motorOption')"
+																filter-list-method="vm.filterStringList(userInput,vm.motorOptionOption.data,'motorOption')" >
+														</input-dropdown>
+													</div>
+												</div>
+											</div>
+                    </div>
+
+                </div>
+            </div>
+			<div class="col-sm-4 col-md-3 col-xs-12">
+				<div class="bg-white borderRadius-xxs padding-s">
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							GEAR
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{(vm.gear.gearType + ' ' + vm.gear.motorDesignation) || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							drive type
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{vm.gear.driveType || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							power (kw)
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{vm.gear.motorPower || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							gear ratio
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{vm.gear.gearRatio || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							motor speed (rpm)
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{vm.gear.motorSpeed || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							output speed
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{ vm.Outputspeed(vm.gear.motorSpeed,vm.gear.gearRatio) || '-'  }}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							output torque
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{ vm.opt(vm.gear.motorPower,vm.gear.effic,vm.gear.motorSpeed,vm.gear.gearRatio )|| '-' }}
+						</div>
+					</div>
+					<div class="row marginBottom-s" >
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							service factor
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{ vm.svf(vm.gear.gearTorque,vm.opt(vm.gear.motorPower,vm.gear.effic,vm.gear.motorSpeed,vm.gear.gearRatio )) || '-' }}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							voltage (D) (v)
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{vm.gear.motorVoltageD || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							voltage (Y) (v)
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{vm.gear.motorVoltageY || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							rated current (d/y) (A)
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{vm.gear.motorCurrent || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							hollow shaft or output shaft (mm)
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{vm.gear.gearHollowOrOutputShaft || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							output flange dia. (mm)
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{ vm.gear.gearOutputFlange || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							motor shaft
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{vm.gear.motorShaft || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							motor flange
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{vm.gear.gearDriveFlange || '-'}}
+						</div>
+					</div>
+
+					<div class="row marginBottom-s" >
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							gear option
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{ vm.gear.gearOption || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							motor option
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{ vm.gear.motorOption || '-' }}
+						</div>
+					</div>
+				</div>
+				<div class="row marginTop-xm textAlign-right">
+					<div ng-if="vm.selected < 10" class="col-xs-12">
+						<div ng-click="vm.gear = []" style="border: none !important; box-shadow: none; text-decoration: underline;" class="button c-danger display-inline-block">
+							Cancel
+						</div>
+						<input type="submit" class="button button-primary display-inline-block" value="Submit" />
+					</div>
+					<div ng-if="vm.selected > 10" class="col-xs-12">
+						<div ng-click="vm.savegearmotor(vm.gear)" class="button button-success display-inline-block"  >save</div>
+						<div ui-sref="dashboard.machineAdd({id: vm.company_id, group: vm.group_id,selected:vm.gear.$id})" class="button button-primary display-inline-block" >select</div>
+					</div>
+				</div>
+			</div>
+        </form>
+
+
+    </div>
+</div>
+<!-- end selectedGear -->

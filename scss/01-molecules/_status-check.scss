@@ -1,0 +1,45 @@
+.statusCheck {
+  & {
+    @extend .borderRadius-circle;
+    @extend .borderWidth-2;
+    @extend .borderStyle-solid;
+    @extend .borderColor-snow-d;
+    @extend .display-block;
+    @extend .cursor-pointer;
+  }
+
+  & + label {
+   @extend .display-none;
+  }
+  &.active + label {
+    @extend .display-block;
+  }
+
+  &.statusCheckSize-m {
+    width: 30px;
+    height: 30px;
+  }
+
+  &.statusCheckSize-s {
+    width: 20px;
+    height: 20px;
+    & + label {
+      @extend .position-absolute;
+      @extend .fontSize-xxs;
+      width: 20px;
+      top: 2px;
+      left: 4px;
+    }
+  }
+
+  &.statusCheckColor-success {
+    &.active {
+      @extend .bg-success;
+      @extend .borderColor-success;
+    }
+    &.active + label {
+      @extend .c-white;
+    }
+  }
+
+}

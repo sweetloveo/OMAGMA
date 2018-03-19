@@ -1,0 +1,52 @@
+.select {
+	@extend .borderWidth-1;
+	@extend .borderStyle-solid;
+	@extend .borderColor-grey;
+	@extend .borderRadius-xxs;
+	@extend .bg-white;
+	@extend .paddingLeftRight-xs;
+	@extend .position-relative;
+	select {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		outline: none;
+		border: none;
+		@extend .width-100;
+		@extend .bg-white;
+		@extend .fontSize-s;
+	}
+	&:after {
+		@extend .display-block;
+		@extend .borderStyle-solid;
+		@extend .borderLeftWidth-2;
+		@extend .borderBottomWidth-2;
+		@extend .borderRightWidth-0;
+		@extend .borderTopWidth-0;
+		@extend .borderColor-grey-d;
+		@extend .position-absolute;
+		pointer-events: none;
+		content: "";
+		width: 9px;
+		height: 9px;
+		right: 10px;
+		top: 6px;
+		transform: rotate(-45deg);
+		-o-transform: rotate(-45deg);
+		-moz-transform: rotate(-45deg);
+		-webkit-transform: rotate(-45deg);
+	}
+	&-m {
+		@extend .paddingTopBottom-xs;
+		&:after { top: 8px; }
+	}
+	&-l {
+		@extend .paddingTopBottom-s;
+		&:after { top: 14px; }
+	}
+	&-full { @extend .width-100; }
+	&-center select {
+		@extend .textAlign-center;
+	  text-align-last: center;
+	}
+}

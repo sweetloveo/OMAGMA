@@ -1,0 +1,7 @@
+.zIndex {
+  &-xs   { z-index: 10; }
+  &-s    { z-index: 100; }
+  &-xm   { z-index: 1000; }
+  &-m    { z-index: 10000; }
+  &-l    { z-index: 100000; }
+}

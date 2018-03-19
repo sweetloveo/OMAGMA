@@ -1,0 +1,12 @@
+.form {
+  &-prefix {
+    @extend .posPinTL;
+    @extend .paddingLeftRight-s;
+    top: 5px;
+  }
+  &-suffix {
+    @extend .posPinTR;
+    @extend .paddingLeftRight-s;
+    top: 5px;
+  }
+}

@@ -1,0 +1,13 @@
+.label {
+	@extend .fontFamily-primary;
+	@extend .fontWeight-3;
+	@extend .paddingTopBottom-xs;
+	@extend .paddingLeftRight-s;
+	@extend .borderStyle-solid;
+	@extend .borderWidth-1;
+	@extend .borderRadius-xs;
+	&.-success {
+		@extend .borderColor-success;
+		@extend .c-success;
+	}
+}

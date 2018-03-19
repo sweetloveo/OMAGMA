@@ -1,0 +1,49 @@
+.tooltip {
+  & {
+    @extend .bg-black-blue;
+    @extend .padding-xs;
+    @extend .posPinTL;
+    @extend .borderRadius-xxs;
+    @extend .width-100;
+    @extend .c-white;
+    @extend .textAlign-center;
+    @extend .zIndex-s;
+  }
+  &.-down {
+    top: 28px;
+    &:before {
+      @extend .bg-black-blue;
+      @extend .display-block;
+      @extend .position-absolute;
+      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      top: -12px;
+      width: 14px;
+      height: 14px;
+      content: "";
+      position: relative;
+      display: block;
+      margin-top: 0;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: -20px;
+    }
+  }
+  &.-up {
+    bottom: 28px;
+    top: auto;
+    &:before {
+      @extend .bg-black-blue;
+      @extend .display-block;
+      @extend .position-absolute;
+      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      bottom: -6px;
+      width: 14px;
+      height: 14px;
+      content: "";
+      position: relative;
+
+    }
+  }
+}

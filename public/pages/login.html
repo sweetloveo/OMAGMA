@@ -1,0 +1,51 @@
+<style>
+    body {
+        background-color: #2a65ff !important;
+    }
+    .navbar, .menubar { 
+        display: none;
+    }
+</style>
+
+<div class="container display-flex justifyContent-center alignItems-center">
+    <div class="borderRadius-xs bg-white boxShadow-card padding-m marginTop-xl" style='width: 360px; min-height: 400px;'>
+        <div class="fontFamily-primary-bold c-primary fontSize-xl textTransform-uppercase">
+            Omagma
+        </div>
+        <div class="fontFamily-primary c-grey-l fontSize-l marginTop-l">
+            Hello there,</br>
+            Welcome Back
+        </div>
+        <form ng-submit="vm.login(vm.user)">
+          <div class="loginForm marginTop-l">
+
+              <div class="input">
+                  <input required ng-model="vm.user.email" type="email" type="text" placeholder="Email Address">
+              </div>
+              <div class="input">
+                  <input  ng-model="vm.user.password" type="password" placeholder="Password">
+              </div>
+              <!--<div ui-sref="forgetpassword" class="link link-primary textAlign-right fontFamily-primary-bold display-block marginTop-xs">
+                  Forget password?
+              </div>-->
+          </div>
+          <div class="loginButton marginTop-xl">
+              <button
+                ng-class="{
+                  'button-grey-d': vm.loading,
+                  'cursor-progress': vm.loading,
+
+                  'button-primary': !vm.loading}"
+                type="submit" class="button fontFamily-primary-bold button-full">
+                <span ng-hide="vm.loading">Login</span>
+                <span ng-show="vm.loading">Loading...</span>
+              </button>
+          </div>
+        </form>
+        <div class="marginTop-xl">
+            <div class="fontFamily-primary c-grey-l">
+                Don't have an account? <span ui-sref="signup({type:'user'})" class="link link-grey fontFamily-primary-bold">Register</span>
+            </div>
+        </div>
+    </div>
+</div>

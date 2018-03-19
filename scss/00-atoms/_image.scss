@@ -1,0 +1,11 @@
+
+// Image Size
+.image-xxs 		{ width: 100px; }
+.image-xs 		{ width: 150px; }
+.image-s 			{ width: 200px; }
+.image-xm 		{ width: 250px; }
+.image-m 	  	{ width: 300px; }
+.image-l 	  	{ width: 500px; }
+.image-xl   	{ width: 750px; }
+.image-xxl   	{ width: 1000px; }
+.image-100    { @extend .width-100 }

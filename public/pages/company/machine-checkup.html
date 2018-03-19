@@ -1,0 +1,143 @@
+<div class="animated fadeIn " style="padding-top: 50px; padding-left: 150px;">
+		<div class="padding-xm">
+			<div class="row marginBottom-xm">
+				<div class="col-xs-12">
+					<div ui-sref="dashboard.machine({id: vm.company_id, group: vm.group_id})" class="display-inline-block button button-m button-primary fontSize-xxs"
+					style="border-color: transparent !important;
+							width: 100px;">
+						<span style="opacity: .8;
+							display: flex;
+							justify-content: center;
+							align-items: center;">
+							<i class="ion-arrow-left-c fontSize-xm marginRight-s"></i> BACK
+						</span>
+					</div>
+				</div>
+			</div>
+	
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="bg-white borderRadius-xs padding-xm">
+						<div class="row marginBottom-s">
+							<div class="col-xs-4">
+								<div class="fontFamily-primary-bold fontSize-m display-inline-block textTransform-capitilze">
+									{{ vm.group.name }}: {{vm.gearmotor.machineno.value}} {{vm.gearmotor.idno.value}}
+								</div>
+							</div>
+							<div class="col-xs-4">
+									<div class="input position-relative display-inline-block width-100" >
+										<input ng-model="vm.search" type="text" placeholder="Search" class="textAlign-center" style="text-align: center; padding: 8px 5px;">
+									</div>
+								</div>
+							<div class="col-xs-4 textAlign-right">
+								<!-- <div ui-sref="dashboard.machineAdd({id: vm.company_id, group: vm.group_id })" class="button display-inline-block textTransform-uppercase" style="width: 150px; color:#2a65ff; border: 1px solid #2a65ff !important;">
+									<i class="ion-plus-round"></i> Add Machine
+								</div> -->
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<table class="width-100">
+									<thead class="fontWeight-7 textAlign-left">
+										<th ng-click="vm.setOrderBy('checkup.name')" class="cursor-pointer textAlign-left padding-s">
+											Checkup history
+											<i
+											ng-show="vm.orderBy.indexOf('checkup.name') >= 0"
+											ng-class="{'ion-arrow-down-b': vm.orderBy === 'checkup.name',
+											'ion-arrow-up-b': vm.orderBy !== 'checkup.name'}"
+											class="c-grey fontSize-xxs"></i>
+										</th>
+										<th ng-click="vm.setOrderBy('checkup.timestamp')" class="cursor-pointer textAlign-left padding-s">
+											Uploaded on
+											<i
+											ng-show="vm.orderBy.indexOf('checkup.timestamp') >= 0"
+											ng-class="{'ion-arrow-down-b': vm.orderBy === 'checkup.timestamp',
+											'ion-arrow-up-b': vm.orderBy !== 'checkup.timestamp'}"
+											class="c-grey fontSize-xxs"></i>
+										</th>
+										<th ng-click="vm.setOrderBy('checkup.temp')" class="cursor-pointer textAlign-left padding-s">
+											Temperature
+											<i
+													ng-show="vm.orderBy.indexOf('checkup.temp') >= 0"
+													ng-class="{'ion-arrow-down-b': vm.orderBy === 'checkup.temp',
+											'ion-arrow-up-b': vm.orderBy !== 'checkup.temp'}"
+													class="c-grey fontSize-xxs"></i>
+										</th>
+										<th ng-click="vm.setOrderBy('checkup.oil')" class="cursor-pointer textAlign-left padding-s">
+											Oil
+											<i
+													ng-show="vm.orderBy.indexOf('checkup.oil') >= 0"
+													ng-class="{'ion-arrow-down-b': vm.orderBy === 'checkup.oil',
+											'ion-arrow-up-b': vm.orderBy !== 'checkup.oil'}"
+													class="c-grey fontSize-xxs"></i>
+										</th>
+										<th ng-click="vm.setOrderBy('checkup.amp')" class="cursor-pointer textAlign-left padding-s">
+											Amp
+											<i
+													ng-show="vm.orderBy.indexOf('checkup.amp') >= 0"
+													ng-class="{'ion-arrow-down-b': vm.orderBy === 'checkup.amp',
+											'ion-arrow-up-b': vm.orderBy !== 'checkup.amp'}"
+													class="c-grey fontSize-xxs"></i>
+										</th>
+										<th ng-click="vm.setOrderBy('checkup.checker')" class="cursor-pointer textAlign-left padding-s">
+											Checker
+											<i
+													ng-show="vm.orderBy.indexOf('checkup.checker') >= 0"
+													ng-class="{'ion-arrow-down-b': vm.orderBy === 'checkup.checker',
+											'ion-arrow-up-b': vm.orderBy !== 'checkup.checker'}"
+													class="c-grey fontSize-xxs"></i>
+										</th>
+										<th ng-click="vm.setOrderBy('checkup.timestamp')" class="cursor-pointer textAlign-left padding-s">
+											Date-Time
+											<i
+													ng-show="vm.orderBy.indexOf('checkup.time') >= 0"
+													ng-class="{'ion-arrow-down-b': vm.orderBy === 'checkup.time',
+											'ion-arrow-up-b': vm.orderBy !== 'checkup.time'}"
+													class="c-grey fontSize-xxs"></i>
+										</th>
+										<th class="textAlign-center padding-s">Action</th>
+									</thead>
+									<tbody>
+										<tr ng-show="vm.checkup" ng-repeat="(key, checkup) in vm.checkup | toArray:false | orderBy:vm.orderBy | filter:vm.search" class="bg-foreground--hover">
+											<td class="textAlign-left padding-s">
+												{{checkup.name}}
+											</td>
+											<td class="textAlign-left padding-s">
+												{{checkup.timestamp}}
+												</td>
+											<td class="textAlign-left padding-s">
+												{{checkup.temp}}
+											</td>
+											<td class="textAlign-left padding-s">
+												{{checkup.oil}}
+											</td>
+											<td class="textAlign-left padding-s">
+												{{checkup.amp}}
+											</td>
+											<td class="textAlign-left padding-s">
+												{{checkup.checker}}
+											</td>
+											<td class="textAlign-left padding-s">
+												{{checkup.time}}
+											</td>
+											<td class="textAlign-center padding-s">
+												<a ng-show="checkup.url" target="_blank" href="{{checkup.url}}" class="link link-primary">
+													View
+												</a><span ng-if="vm.user.profile.level == 'admin'" class=" link-black" >/</span>
+												<span ng-if="vm.user.profile.level == 'admin'" ng-show="checkup.url"  class="link link-danger" ng-click="vm.deleteGearDetail('checkup', checkup)">
+									[Delete]
+								</span>
+												<span ng-show="!checkup.url" class="c-grey">
+													View
+												</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

@@ -1,0 +1,90 @@
+<!-- selectedCompany -->
+<div class="animated fadeIn " style="padding-top: 50px; padding-left: 150px;">
+	<div class="padding-xm">
+		<div class="row marginBottom-xm">
+			<div class="col-xs-12">
+				<div ui-sref="dashboard.company" class="display-inline-block button button-m button-primary fontSize-xxs"
+				style="border-color: transparent !important;
+						width: 100px;">
+					<span style="opacity: .8;
+						display: flex;
+						justify-content: center;
+						align-items: center;">
+						<i class="ion-arrow-left-c fontSize-xm marginRight-s"></i> BACK
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="bg-white borderRadius-xs padding-xm">
+					<div class="row marginBottom-s">
+						<div class="col-xs-6">
+							<div class="fontFamily-primary-bold fontSize-m display-inline-block textTransform-capitilze">
+								<a style="color: #f60000;"> {{ vm.selectedCompany.name }}</a> => Machine LINE
+							</div>
+						</div>
+						<div class="col-xs-6 textAlign-right">
+							<div ng-if="vm.user.profile.level == 'admin'" ng-click="vm.showAddGroup = true;" class="button display-inline-block textTransform-uppercase" style="width: 150px; color:#2a65ff; border: 1px solid #2a65ff !important;">
+								<i class="ion-plus-round"></i> Add LINE
+							</div>
+						</div>
+					</div>
+					<div ng-repeat="(key,group) in vm.selectedCompany.group" class="row bg-foreground--hover cursor-pointer paddingTopBottom-s">
+						<div ng-hide="group.edit"  class="col-xs-6">
+							{{group.name}}
+						</div>
+						<div ng-show="group.edit"  class="col-xs-6">
+							<input ng-model="group.name" type="text" class="display-inline-block">
+						</div>
+						<div class="col-xs-6 textAlign-right">
+							<div ng-hide="group.edit">
+							<div  ng-click="group.edit = true;" class="marginRight-s display-inline-block">
+								<i></i>
+							</div>
+								</div>
+							<div ng-hide="group.edit" ng-if="vm.user.profile.level == 'admin'" ng-click="group.edit = true;" class="button bg-grey c-white button-m display-inline-block" style="border-color: transparent!important; padding: 1px 5px;"><i  class="ion-ios-compose-outline fontSize-m " ></i></div>
+							<i ng-show="group.edit"  class="ion-android-create fontSize-m c-grey c-danger--hover" ng-click="group.edit = '';vm.selectedCompany.$save(group);"></i>
+                            <div ng-show="group.edit" ng-if="vm.user.profile.level == 'admin'" ng-click="vm.deletegroup(key);" class="marginRight-s display-inline-block">
+                                <i class="fontSize-m c-grey">/</i> <i class="ion-trash-a fontSize-m c-grey c-danger--hover"></i>
+                            </div>
+
+                            <div ui-sref="dashboard.machine({id: vm.selectedCompany.$id, group: key})" class="button bg-grey c-white button-m display-inline-block" style="border-color: transparent!important; padding: 1px 5px;">
+                                <i class="ion-document-text fontSize-m"></i>
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end content -->
+
+<!-- Add Group -->
+<div ng-show="vm.showAddGroup" class="animated fadeIn posFixTL" style="width: 100vw; height: 100vh; background-color: rgba(255,255,255,.9); padding-top: 55px; padding-left: 150px; padding-right: 280px;">
+    <div class="padding-xm">
+        <div class="bg-white padding-xm boxShadow-card borderRadius-xs borderWidth-1 borderColor-foreground borderStyle-solid centered" style="width: 400px; min-height: 100px;">
+            <div class="fontFamily-primary-bold textTransform-uppercase position-relative fontSize-xs">
+                New Group <span class="floatRight" style="margin-top:-5px"><i ng-click="vm.showAddGroup = false" class="icon ion-close-round c-grey fontSize-xm"></i></span>
+            </div>
+            <div class="row marginTop-xm">
+                <div class="col-xs-4">
+                    <div class="fontFamily-primary-bold fontSize-s lh-2 textTransform-capitilze">group name</div>
+                </div>
+                <div class="col-xs-8">
+                    <input ng-model="vm.newGroup.name" class="bg-foreground padding-xs borderWidth-0 width-100" type="text" placeholder="Enter machine's group name">
+                </div>
+            </div>
+            <div class="row marginTop-xm">
+                <div class="col-xs-8 col-xs-offset-4">
+                    <div ng-click="vm.addGroup(vm.newGroup)" class="button button-primary c-white button-m display-inline-block" style="border-color: transparent!important; padding: 5px;">
+                        Add
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end add group -->

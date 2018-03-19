@@ -1,0 +1,30 @@
+.menu-push {
+  & {
+    @extend .bg-grey-d;
+    @extend .zIndex-l;
+    @extend .textAlign-center;
+    @extend .c-white;
+    @extend .fontSize-s;
+    @extend .transitionProperty-all;
+    @extend .transitionDuration-m;
+    @extend .transitionTimingFn-ease-in-out;
+    height: 100vh;
+    width: 250px;
+  }
+  &.-left {
+    @extend .posFixTR;
+    right: -250px !important;
+  }
+  &.-left.active {
+    transform: translateX(-250px);
+  }
+  & li a {
+    @extend .display-block;
+    @extend .paddingTopBottom-s;
+    @extend .paddingLeftRight-xs;
+    @extend .lh-3;
+    @extend .borderBottomWidth-1;
+    @extend .borderColor-grey;
+    @extend .borderStyle-solid;
+  }
+}

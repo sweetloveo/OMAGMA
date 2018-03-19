@@ -1,0 +1,330 @@
+<div class="animated fadeIn " style="padding-top: 50px; padding-left: 150px;">
+	<div class="padding-xm">
+		<div class="row marginBottom-xm">
+			<div class="col-xs-12">
+				<div ui-sref="dashboard.machine({id: vm.company_id, group: vm.group_id})" class="display-inline-block button button-m button-primary fontSize-xxs"
+				style="border-color: transparent !important;
+						width: 100px;">
+					<span style="opacity: .8;
+						display: flex;
+						justify-content: center;
+						align-items: center;">
+						<i class="ion-arrow-left-c fontSize-xm marginRight-s"></i> BACK
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="bg-white borderRadius-xs padding-xm">
+					<button ng-print print-element-id="print" class="button button-m button-primary--border textTransform-uppercase" style="width: 150px; color:#2a65ff; border: 1px solid #2a65ff !important;">
+						<i class="ion-printer"></i> Print
+					</button>
+					<button ng-click="vm.deletemachine()" ng-if="vm.user.profile.level == 'admin'" class="button button-danger" style="width: 150px;">
+						<i class="ion-compose"></i> Delete
+					</button>
+					<button ng-click="vm.showEditGM = true;vm.Getcompany()" ng-if="vm.gear_data.activate === 'False'" class="button button-success" style="width: 150px;">
+						<i class="ion-compose"></i> Edit Gearmotor
+					</button>
+
+					<div id="print">
+					<table class="width-100 table-description">
+						<tr>
+							<td></td>
+							<td></td>
+							<td class="fontWeight-7 padding-xs textAlign-center">Maintenance History (latest)</td>
+							<td class="fontWeight-7 padding-xs textAlign-center">Checkup History (latest)</td>
+						</tr>
+						<tr>
+							<td class="fontWeight-7 padding-xs">DATE OF RECORD</td>
+							<td class="padding-xs">1-Sep-17</td>
+							<td class="padding-xs textAlign-center">
+								<span ng-show="vm.maintenance[vm.maintenance.length - 1]">
+									{{ vm.maintenance[vm.maintenance.length - 1].name }}
+								</span>
+								<a
+									ng-show="vm.maintenance[vm.maintenance.length - 1]"
+									target="_blank"
+									href="{{ vm.maintenance[vm.maintenance.length - 1].url }}"
+									class="link ink-primary">
+									[View]
+								</a>
+								<span ng-if="vm.user.profile.level == 'admin'" ng-show="vm.maintenance[vm.maintenance.length - 1]" class="link link-danger" ng-click="vm.deleteGearDetail('maintenance', vm.maintenance[vm.maintenance.length - 1])">
+									[Delete]
+								</span>
+								<span ng-show="!vm.maintenance[vm.maintenance.length - 1]" class="link link-grey cursor-not-allowed">
+									[View]
+								</span>
+							</td>
+							<td class="padding-xs textAlign-center">
+								<span ng-show="vm.checkup[vm.checkup.length - 1]">
+									{{ vm.checkup[vm.checkup.length - 1].name }}
+								</span>
+								<a
+									ng-show="vm.checkup[vm.checkup.length - 1]"
+									target="_blank"
+									href="{{ vm.checkup[vm.checkup.length - 1].url }}"
+									class="link ink-primary">
+									[View]
+								</a>
+								<span ng-if="vm.user.profile.level == 'admin'" ng-show="vm.checkup[vm.checkup.length - 1]" class="link link-danger" ng-click="vm.deleteGearDetail('checkup', vm.checkup[vm.checkup.length - 1])">
+									[Delete]
+								</span>
+								<span ng-show="!vm.checkup[vm.checkup.length - 1]" class="link link-grey cursor-not-allowed">
+									[View]
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="fontWeight-7 padding-xs">ID No.</td>
+							<td class="padding-xs">{{ vm.gear_data.idno }}</td>
+							<td ng-show="vm.admin" class="padding-xs" style="vertical-align: top">
+								<droplet  ng-model="machine_maintenance" class="padding-s display-flex c-grey borderRadius-xs borderWidth-1 borderStyle-dashed" style="justify-content: center; align-items: center">
+									Please drag maintenance PDF file to here
+								</droplet>
+							</td>
+							<td ng-show="vm.admin" class="padding-xs" style="vertical-align: top">
+								<droplet  ng-model="machine_checkup" class="padding-s display-flex c-grey borderRadius-xs borderWidth-1 borderStyle-dashed" style="justify-content: center; align-items: center">
+									Please drag checkup PDF file to here
+								</droplet>
+							</td>
+						</tr>
+						<tr>
+							<td class="fontWeight-7 padding-xs">Type</td>
+							<td class="padding-xs">{{ vm.gear_data.type }}</td>
+						</tr>
+						<tr>
+							<td class="fontWeight-7 padding-xs">Power [KW]</td>
+							<td class="padding-xs">{{ vm.gear_data.power }}</td>
+						</tr>
+						<tr>
+							<td class="fontWeight-7 padding-xs">Ratio</td>
+							<td class="padding-xs">{{ vm.gear_data.ratio }}</td>
+						</tr>
+						<tr>
+							<td class="fontWeight-7 padding-xs">Speed [RPM]</td>
+							<td class="padding-xs">{{ vm.gear_data.speed }}</td>
+						</tr>
+						<tr>
+							<td class="fontWeight-7 padding-xs">Torque [Nm]</td>
+							<td class="padding-xs">{{ vm.gear_data.torque }}</td>
+						</tr>
+						<tr>
+							<td class="fontWeight-7 padding-xs">S.F.</td>
+							<td class="padding-xs">{{ vm.gear_data.sf }}</td>
+						</tr>
+						<tr>
+							<td class="fontWeight-7 padding-xs">Voltage System [V]</td>
+							<td class="padding-xs">{{ vm.gear_data.voltagesystem }}</td>
+						</tr>
+						<tr>
+							<td class="fontWeight-7 padding-xs">Rated Current (at 400 V) [A]</td>
+							<td class="padding-xs">{{ vm.gear_data.ratedcurrent }}</td>
+						</tr>
+						<tr>
+							<td class="fontWeight-7 padding-xs">Brake Voltage / Torque / Rectifier</td>
+							<td class="padding-xs">{{ vm.gear_data.brakevolttorquerectifier }}</td>
+						</tr>
+						<tr>
+							<td class="fontWeight-7 padding-xs">Shaft / Flange [mm]</td>
+							<td class="padding-xs">{{ vm.gear_data.shaftflange }}</td>
+						</tr>
+						<tr>
+							<td class="fontWeight-7 padding-xs">MTG / KK</td>
+							<td class="padding-xs">{{ vm.gear_data.mtgkk }}</td>
+						</tr>
+						<tr>
+							<td class="fontWeight-7 padding-xs">Motor Flange [mm]</td>
+							<td class="padding-xs">{{ vm.gear_data.motorflange }}</td>
+						</tr>
+						<tr>
+							<td class="fontWeight-7 padding-xs">Serial No.</td>
+							<td class="padding-xs">{{ vm.gear_data.serialno }}</td>
+						</tr>
+						<tr>
+							<td class="fontWeight-7 padding-xs">Machine No.</td>
+							<td class="padding-xs">{{ vm.gear_data.machineno }}</td>
+						</tr>
+						<tr>
+							<td class="fontWeight-7 padding-xs">Layout No.</td>
+							<td class="padding-xs">{{ vm.gear_data.layoutno }}</td>
+						</tr>
+						<tr>
+							<td class="fontWeight-7 padding-xs">Nameplate</td>
+							<td class="padding-xs">{{ vm.gear_data.nameplate }}</td>
+						</tr>
+						<tr>
+							<td class="fontWeight-7 padding-xs">Complete Unit</td>
+							<td class="padding-xs">{{ vm.gear_data.completeunit }}</td>
+						</tr>
+						<tr>
+							<td class="fontWeight-7 padding-xs">New Item</td>
+							<td class="padding-xs">{{ vm.gear_data.newitem }}</td>
+						</tr>
+						<tr>
+							<td class="fontWeight-7 padding-xs">PL</td>
+							<td class="padding-xs">{{ vm.gear_data.pl }}</td>
+						</tr>
+
+						<tr>
+							<td class="fontWeight-7 padding-xs" style="vertical-align: top;">Images</td>
+							<td ng-show="vm.admin"  class="padding-xs">
+								<droplet print-remove ng-model="machine_image" class="padding-xl display-flex c-grey borderRadius-xs borderWidth-1 borderStyle-dashed" style="justify-content: center; align-items: center">
+									Please drag image to here
+								</droplet>
+							</td>
+						</tr>
+
+					</table>
+
+								<br>
+								<div  id="print" ng-if="vm.images[0].url" class="row display-flex c-grey borderRadius-xs borderWidth-1 borderStyle-dashed">
+									<div ng-repeat="image in vm.images" class="col-xs-12 delete-block ">
+										<div ng-if="vm.user.profile.level == 'admin'" class="delete" ng-click="vm.deleteGearDetail('images', image)">
+											<i class="ion-trash-b"></i>
+										</div>
+										<img ng-click="vm.imageModal.show = true; vm.imageModal.image = image;" class="width-100 cursor-pointer" ng-src="{{image.url}}"/>
+									</div>
+								</div>
+
+
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div ng-show="vm.showdetail_mt" class="animated fadeIn posFixTL" style="width: 100vw; height: 100vh; background-color: rgba(255,255,255,.9); padding-top: 55px; padding-left: 150px; padding-right: 280px;">
+	<div class="padding-xm">
+		<form class="bg-white padding-xm boxShadow-card borderRadius-xs borderWidth-1 borderColor-foreground borderStyle-solid centered" style="width: 400px; min-height: 100px;">
+			<div class="fontFamily-primary-bold textTransform-uppercase position-relative fontSize-xs">
+				Detail Maintenance <span class="floatRight" style="margin-top:-5px">
+			</div>
+			<form>
+			<div class="row marginTop-xm">
+				<div class="col-xs-4">
+					<div class="fontFamily-primary-bold fontSize-s lh-2">
+						Maintainer</div>
+				</div>
+				<div class="col-xs-8">
+					<input required ng-model="vm.maintenance.maintainer" class="bg-foreground padding-xs borderWidth-0 width-100" type="text" placeholder="ผู้ซ่อมบำรุง">
+				</div>
+			</div>
+			<div class="row marginTop-s">
+				<div class="col-xs-4">
+					<div class="fontFamily-primary-bold fontSize-s lh-2">Case</div>
+				</div>
+				<div class="col-xs-8">
+					<input required ng-model="vm.maintenance.cause" class="bg-foreground padding-xs borderWidth-0 width-100" type="text" placeholder="สาเหตุ">
+				</div>
+			</div>
+			<div class="row marginTop-s">
+				<div class="col-xs-4">
+					<div class="fontFamily-primary-bold fontSize-s lh-2">Date-Time</div>
+				</div>
+				<div class="col-xs-8">
+					<datepicker date-format="MM/dd/yyyy">
+
+						<input required ng-model="vm.maintenance.date" class="bg-foreground padding-xs borderWidth-0 width-100" type="text" placeholder="วันที่บำรุงรักษา"/>
+					</datepicker>
+				</div>
+			</div>
+			<div class="row marginTop-xm">
+				<div class="col-xs-8 col-xs-offset-4">
+					<button type="submit" ng-click="vm.addmt(vm.maintenance);" class="button button-primary c-white button-m display-inline-block" style="border-color: transparent!important; padding: 5px;">
+						Add
+					</button>
+				</div>
+			</div>
+		</form>
+		</div>
+	</div>
+<div ng-show="vm.showdetail_cu" class="animated fadeIn posFixTL" style="width: 100vw; height: 100vh; background-color: rgba(255,255,255,.9); padding-top: 55px; padding-left: 150px; padding-right: 280px;">
+	<div class="padding-xm">
+		<form class="bg-white padding-xm boxShadow-card borderRadius-xs borderWidth-1 borderColor-foreground borderStyle-solid centered" style="width: 400px; min-height: 100px;">
+			<div class="fontFamily-primary-bold textTransform-uppercase position-relative fontSize-xs">
+				Detail checkup <span class="floatRight" style="margin-top:-5px">
+			</div>
+			<form>
+				<div class="row marginTop-xm">
+					<div class="col-xs-4">
+						<div class="fontFamily-primary-bold fontSize-s lh-2">
+							Temperature</div>
+					</div>
+					<div class="col-xs-8">
+						<input required ng-model="vm.checkup.temp" class="bg-foreground padding-xs borderWidth-0 width-100" type="text" placeholder="อุณหภูมิ">
+					</div>
+				</div>
+				<div class="row marginTop-s">
+					<div class="col-xs-4">
+						<div class="fontFamily-primary-bold fontSize-s lh-2">Oil</div>
+					</div>
+					<div class="col-xs-8">
+						<input required ng-model="vm.checkup.oil" class="bg-foreground padding-xs borderWidth-0 width-100" type="text" placeholder="สารหล่อลื่น">
+					</div>
+				</div>
+				<div class="row marginTop-s">
+					<div class="col-xs-4">
+						<div class="fontFamily-primary-bold fontSize-s lh-2">Amp</div>
+					</div>
+					<div class="col-xs-8">
+						<input required ng-model="vm.checkup.amp" class="bg-foreground padding-xs borderWidth-0 width-100" type="text" placeholder="แอมป์">
+					</div>
+				</div>
+				<div class="row marginTop-s">
+					<div class="col-xs-4">
+						<div class="fontFamily-primary-bold fontSize-s lh-2">Checker</div>
+					</div>
+					<div class="col-xs-8">
+						<input required ng-model="vm.checkup.checker" class="bg-foreground padding-xs borderWidth-0 width-100" type="text" placeholder="ผู้ตรวจสอบ">
+					</div>
+				</div>
+				<div class="row marginTop-s">
+					<div class="col-xs-4">
+						<div class="fontFamily-primary-bold fontSize-s lh-2">Date-Time</div>
+					</div>
+					<div class="col-xs-8">
+						<datepicker date-format="MM/dd/yyyy">
+
+							<input required ng-model="vm.checkup.date" class="bg-foreground padding-xs borderWidth-0 width-100" type="text" placeholder="วันที่ตรวจสอบ"/>
+						</datepicker>
+					</div>
+				</div>
+				<div class="row marginTop-xm">
+					<div class="col-xs-8 col-xs-offset-4">
+						<button type="submit" ng-click="vm.addcu(vm.checkup)" class="button button-primary c-white button-m display-inline-block" style="border-color: transparent!important; padding: 5px;">
+							Add
+						</button>
+					</div>
+				</div>
+			</form>
+	</div>
+</div>
+
+
+<div ng-show="vm.showEditGM" class="animated fadeIn posFixTL" style="width: 100vw; height: 100vh; background-color: rgba(255,255,255,.9); padding-top: 55px; padding-left: 150px; padding-right: 280px;">
+	<div class="padding-xm">
+		<div class="bg-white padding-xm boxShadow-card borderRadius-xs borderWidth-1 borderColor-foreground borderStyle-solid centered" style="width: 400px; min-height: 100px;">
+			<div class="fontFamily-primary-bold textTransform-uppercase position-relative fontSize-xs">
+				Edit Gearmotor <span class="floatRight" style="margin-top:-5px"><i ng-click="vm.showEditGM = false" class="icon ion-close-round c-grey fontSize-xm"></i>
+			</div>
+			<div class="row marginTop-m">
+				<div class="col-xs-5">
+					<div class="fontFamily-primary-bold fontSize-s lh-2">new gearmotor</div>
+				</div>
+				<div class="col-xs-7">
+					<select ng-options="gearformdb as gearformdb.gearType+' '+gearformdb.motorType for gearformdb in vm.gearformdb track by gearformdb.gearType" ng-model="vm.gearselected">
+						<option value="" selected disabled>-- Select company --</option>
+					</select>
+				</div>
+			</div>
+			<div class="row marginTop-xm">
+				<div class="col-xs-8 col-xs-offset-4">
+					<div ui-sref="dashboard.machineEdit({id: vm.company_id, group: vm.group_id,selected:vm.gearselected.$id,machine:vm.gear_data.$id})" class="button button-primary c-white button-m display-inline-block" style="border-color: transparent!important; padding: 5px;">
+						select
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

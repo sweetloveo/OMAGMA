@@ -1,0 +1,34 @@
+@each $size in $scale-size {
+	$type: nth($size, 1);
+	$value: nth($size, 2);
+
+	.padding-#{$type} 				{ padding: #{$value}; }
+	.paddingLeft-#{$type} 		{ padding-left: #{$value}; }
+	.paddingRight-#{$type} 		{ padding-right: #{$value}; }
+	.paddingTop-#{$type} 			{ padding-top: #{$value}; }
+	.paddingBottom-#{$type} 	{ padding-bottom: #{$value}; }
+
+	.paddingTopBottom-#{$type} {
+		padding-top: #{$value};
+		padding-bottom: #{$value};
+	}
+
+	.paddingLeftRight-#{$type} {
+		padding-left: #{$value};
+		padding-right: #{$value};
+	}
+
+	.marginBottom-#{$type} 	{ margin-bottom: #{$value}; }
+	.marginTop-#{$type} 		{ margin-top: #{$value}; }
+	.marginLeft-#{$type} 		{ margin-left: #{$value}; }
+	.marginRight-#{$type} 	{ margin-right: #{$value}; }
+	.margin-#{$type} 				{ margin: #{$value}; }
+}
+
+
+.centered {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.paddingLeft-30 			{ padding-left: 30%; }

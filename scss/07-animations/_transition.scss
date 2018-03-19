@@ -1,0 +1,19 @@
+.transitionProperty {
+	&-all 	{ transition-property: all; }
+	&-bg 		{ transition-property: background; }
+	&-translateX { transition-property: translateX; }
+}
+
+.transitionDuration {
+	&-s { transition-duration: .1s; }
+	&-xm { transition-duration: .3s; }
+	&-m { transition-duration: .5s; }
+	&-l { transition-duration: 1s; }
+}
+
+.transitionTimingFn {
+	&-linear { transition-timing-function: linear; }
+	&-ease-in { transition-timing-function: ease-in; }
+	&-ease-out { transition-timing-function: ease-out; }
+	&-ease-in-out { transition-timing-function: ease-in-out; }
+}

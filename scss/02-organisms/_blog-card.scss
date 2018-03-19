@@ -1,0 +1,35 @@
+$blogHeight: 390px;
+.blog-card {
+	@extend .bg-white;
+	@extend .borderRadius-xxs;
+	@extend .boxShadow-card;
+	height: $blogHeight;
+
+	.blog-image {
+		 @extend .backgroundPos-center;
+		 @extend .backgroundSize-cover;
+		 @extend .bg-grey;
+		 height: ($blogHeight/2) - 30;
+	}
+	.blog-content {
+		@extend .padding-xm;
+		height: 220px;
+		.blog-content-title {
+			@extend .fontFamily-primary;
+			@extend .fontSize-xm;
+			@extend .c-font;
+			@extend .marginBottom-s;
+		}
+		.blog-content-excerpt {
+			@extend .c-font;
+			@extend .fontSize-s;
+		}
+		.blog-content-date {
+			@extend .c-font;
+			@extend .fontSize-xs;
+			@extend .marginTop-xm;
+			bottom: 25px;
+			position: absolute;
+		}
+	}
+}

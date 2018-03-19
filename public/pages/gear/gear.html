@@ -1,0 +1,89 @@
+<!-- dashboard -->
+<div ng-init="vm.page = 'gear'" ng-show="vm.page == 'gear'" class="animated fadeIn" style="padding-top: 55px; padding-left: 150px;">
+    <div class="padding-xm">
+        <div class="row">
+            <div class="col-xs-12">
+				<div class="row marginBottom-xm">
+					<div class="col-xs-12">
+						<div ui-sref="dashboard.machine({id: vm.company_id, group: vm.group_id})" class="button button-m button-primary fontSize-xxs"
+							 style="border-color: transparent !important;
+											width: 100px;">
+										<span style="opacity: .8;
+											display: flex;
+											justify-content: center;
+											align-items: center;">
+											<i class="ion-arrow-left-c fontSize-xm marginRight-s"></i> BACK
+										</span>
+						</div>
+					</div>
+				</div>
+                <div class="bg-white borderRadius-xs padding-xm">
+                    <div class="row marginBottom-s">
+                        <div class="col-xs-4">
+                            <div class="fontFamily-primary-bold fontSize-m display-inline-block">
+                                Select Gearmotor
+                            </div>
+                            <!--<input required class="fontFamily-primary paddingTopBottom-xs paddingLeftRight-s bg-foreground borderWidth-0" type="text" placeholder="Search" />-->
+                        </div>
+												<div class="col-xs-4">
+													<div class="input position-relative display-inline-block width-100" >
+														<input ng-model="vm.gearSearch" type="text" placeholder="Search" class="textAlign-center" style="text-align: center; padding: 8px 5px;">
+													</div>
+												</div>
+                        <div class="col-xs-4 textAlign-right">
+                            <div ui-sref="dashboard.gearSingle({id:vm.company_id,group:vm.group_id})" class="button button-primary display-inline-block borderRadius-xxs" style="border-color: transparent!important; padding: 5px; width: 170px">
+                                Add Gear/Motor
+                            </div>
+                        </div>
+                    </div>
+                    <div class="paddingLeftRight-s">
+											<ul>
+												<li class="row fontWeight-5 paddingTopBottom-s borderTopWidth-1 borderStyle-solid borderColor-foreground">
+													<div class="col-xs-3  cursor-pointer" ng-click="vm.gearFilter = 'driveType'">
+														Drive Type <i ng-show="vm.gearFilter == 'driveType'" class="ion-arrow-down-b"></i>
+													</div>
+													<div class="col-xs-3 cursor-pointer" ng-click="vm.gearFilter = 'gearType'">
+														Gearmotor <i ng-show="vm.gearFilter == 'gearType'" class="ion-arrow-down-b"></i>
+													</div>
+													<div class="col-xs-2 cursor-pointer" ng-click="vm.gearFilter = 'motorPower'">
+														Power (kW) <i ng-show="vm.gearFilter == 'motorPower'" class="ion-arrow-down-b"></i>
+													</div>
+													<div class="col-xs-2 cursor-pointer" ng-click="vm.gearFilter = 'motorSpeed'">
+														Output Speed <i ng-show="vm.gearFilter == 'motorSpeed'" class="ion-arrow-down-b"></i>
+													</div>
+													<div class="col-xs-2">
+														
+													</div>
+												</li>
+												<li ng-repeat="gear in vm.gearformdb | filter:vm.gearSearch | orderBy: vm.gearFilter" class="row bg-foreground--hover paddingTopBottom-s borderTopWidth-1 borderStyle-solid borderColor-foreground">
+													<div class="col-xs-3 lh-3">
+														{{ gear.driveType }}
+													</div>
+													<div class="col-xs-3 lh-3">
+														{{ gear.gearType + ' ' + gear.motorDesignation }}
+													</div>
+													<div class="col-xs-2 lh-3">
+														{{ gear.motorPower }}
+													</div>
+													<div class="col-xs-2 lh-3">
+														{{ gear.motorSpeed }}
+													</div>
+													<div class="col-xs-2 textAlign-right">
+														<div ng-if="vm.user.profile.level == 'admin'" ng-click="vm.deletegear(gear)" class="marginRight-s display-inline-block">
+                                <i class="ion-trash-a fontSize-m c-grey c-danger--hover"></i>
+                            </div>
+														<div ui-sref="dashboard.gmselected({id:vm.company_id,group:vm.group_id,selected:gear.$id})" class="button bg-grey c-white button-m display-inline-block" style="border-color: transparent!important; padding: 1px 5px;">
+                                <i class="ion-document-text fontSize-m"></i>
+                            </div>
+													</div>
+												</li>
+											</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end content -->
+
+

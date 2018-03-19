@@ -1,0 +1,403 @@
+<style>
+	.input input {
+		padding-top: 6px;
+    padding-bottom: 6px;
+	}
+</style>
+
+<div class="animated fadeIn " style="padding-top: 50px; padding-left: 150px;">
+	<div class="padding-xm">
+		<div class="row marginBottom-xm">
+			<div class="col-xs-12">
+				<div ui-sref="dashboard.machine({id: vm.company_id, group: vm.group_id})" class="display-inline-block button button-m button-primary fontSize-xxs"
+				style="border-color: transparent !important;
+						width: 100px;">
+					<span style="opacity: .8;
+						display: flex;
+						justify-content: center;
+						align-items: center;">
+						<i class="ion-arrow-left-c fontSize-xm marginRight-s"></i> BACK
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-9">
+				<div class="bg-white borderRadius-xs padding-xm">
+					<div class="row marginBottom-s">
+						<div class="col-xs-6">
+							<div class="fontFamily-primary-bold fontSize-m display-inline-block textTransform-capitilze">
+								Machine spec
+							</div>
+						</div>
+
+					</div>
+					<form ng-submit="vm.addMachine()">
+					<div class="row marginBottom-xm">
+						<div class="col-xs-3 fontWeight-7">
+							Overhual Date
+						</div>
+						<div class="col-xs-3">
+							00/00/00
+						</div>
+					</div>
+
+					<div class="row marginBottom-s">
+						<div class="col-xs-3 fontWeight-7">
+							Power [KW]
+						</div>
+						<div class="col-xs-9">
+							<div class="input input-m">
+								<input required ng-model="vm.machine.power" type="text" >
+							</div>
+						</div>
+					</div>
+						<div class="row marginBottom-s">
+							<div class="col-xs-3 fontWeight-7">
+								ID NO.
+							</div>
+							<div class="col-xs-9">
+								<div class="input input-m">
+									<input required ng-model="vm.machine.idno" type="text" >
+								</div>
+							</div>
+						</div>
+						<div class="row marginBottom-s">
+							<div class="col-xs-3 fontWeight-7">
+								Machine Group.
+							</div>
+							<div class="col-xs-9">
+								<div class="input input-m">
+									<input required ng-model="vm.machine.groupno" type="text" >
+								</div>
+							</div>
+						</div>
+						<div class="row marginBottom-s">
+							<div class="col-xs-3 fontWeight-7">
+								Machine No.
+							</div>
+							<div class="col-xs-9">
+								<div class="input input-m">
+									<input required ng-model="vm.machine.machineno" type="text" >
+								</div>
+							</div>
+						</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-3 fontWeight-7">
+							Ratio
+						</div>
+						<div class="col-xs-9">
+							<div class="input input-m">
+								<input required ng-model="vm.machine.ratio" type="text" placeholder="eg. 3330022">
+							</div>
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-3 fontWeight-7">
+							Speed [RPM]
+						</div>
+						<div class="col-xs-9">
+							<div class="input input-m">
+								<input required ng-model="vm.machine.speed" type="text" placeholder="eg. 3330022">
+							</div>
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-3 fontWeight-7">
+							Torque [Nm]
+						</div>
+						<div class="col-xs-9">
+							<div class="input input-m">
+								<input required ng-model="vm.machine.torque" type="text" placeholder="eg. 3330022">
+							</div>
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-3 fontWeight-7">
+							S.F.
+						</div>
+						<div class="col-xs-9">
+							<div class="input input-m">
+								<input required ng-model="vm.machine.sf" type="text" placeholder="eg. 3330022">
+							</div>
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-3 fontWeight-7">
+							Voltage System [V]
+						</div>
+						<div class="col-xs-9">
+							<div class="input input-m">
+								<input required ng-model="vm.machine.voltagesystem" type="text" placeholder="eg. 3330022">
+							</div>
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-3 fontWeight-7">
+							Rated Current (at 400 V) [A]
+						</div>
+						<div class="col-xs-9">
+							<div class="input input-m">
+								<input ng-model="vm.machine.ratedcurrent" type="text" placeholder="eg. 3330022">
+							</div>
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-3 fontWeight-7">
+							Brake Voltage / Torque / Rectifier
+						</div>
+						<div class="col-xs-9">
+							<div class="input input-m">
+								<input required ng-model="vm.machine.brakevolttorquerectifier" type="text" placeholder="eg. 3330022">
+							</div>
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-3 fontWeight-7">
+							Shaft / Flange [mm]
+						</div>
+						<div class="col-xs-9">
+							<div class="input input-m">
+								<input required ng-model="vm.machine.shaftflange" type="text" placeholder="eg. 3330022">
+							</div>
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-3 fontWeight-7">
+							MTG / KK
+						</div>
+						<div class="col-xs-9">
+							<div class="input input-m">
+								<input required ng-model="vm.machine.mtgkk" type="text" placeholder="eg. 3330022">
+							</div>
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-3 fontWeight-7">
+							Motor Flange [mm]
+						</div>
+						<div class="col-xs-9">
+							<div class="input input-m">
+								<input ng-model="vm.machine.motorflange" type="text" placeholder="eg. 3330022">
+							</div>
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-3 fontWeight-7">
+							Serial No
+						</div>
+						<div class="col-xs-9">
+							<div class="input input-m">
+								<input required ng-model="vm.machine.serialno" type="text" placeholder="eg. 3330022">
+							</div>
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-3 fontWeight-7">
+							Layout No.
+						</div>
+						<div class="col-xs-9">
+							<div class="input input-m">
+								<input required ng-model="vm.machine.layoutno" type="text" placeholder="eg. 3330022">
+							</div>
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-3 fontWeight-7">
+							Nameplate
+						</div>
+						<div class="col-xs-9">
+							<div class="input input-m">
+								<input required ng-model="vm.machine.nameplate" type="text" placeholder="eg. 3330022">
+							</div>
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-3 fontWeight-7">
+							Complete Unit
+						</div>
+						<div class="col-xs-9">
+							<div class="input input-m">
+								<input required ng-model="vm.machine.completeunit" type="text" placeholder="eg. 3330022">
+							</div>
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-3 fontWeight-7">
+							New Item
+						</div>
+						<div class="col-xs-9">
+							<div class="input input-m">
+								<input required ng-model="vm.machine.newitem" type="text" placeholder="eg. 3330022">
+							</div>
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-3 fontWeight-7">
+							PL
+						</div>
+						<div class="col-xs-9">
+							<div class="input input-m">
+								<input required ng-model="vm.machine.pl" type="text" placeholder="eg. 3330022">
+							</div>
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-12 textAlign-right">
+							<button type="submit"  class="button display-inline-block textTransform-uppercase" style="width: 150px; color:#2a65ff; border: 1px solid #2a65ff !important;">
+								Save
+							</button>
+						</div>
+					</div>
+
+					</form>
+				</div>
+			</div>
+
+
+			<div class="col-sm-4 col-md-3 col-xs-12">
+				<div class="bg-white borderRadius-xxs padding-s">
+					<div class="fontFamily-primary-bold fontSize-s display-inline-block textTransform-capitilze">
+						GEARMOTOR spec
+					</div>
+					<div class="row marginBottom-s">
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							Name
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{(vm.gear.gearType + ' ' + vm.gear.motorDesignation) || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							drive type
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{vm.gear.driveType || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							power (kw)
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{vm.gear.motorPower || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							gear ratio
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{vm.gear.gearRatio || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							motor speed (rpm)
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{vm.gear.motorSpeed || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							output speed
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{ vm.gear.motorSpeed / vm.gear.gearRatio || '-'  }}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							output torque
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{ ((9550 * vm.gear.motorPower) / (vm.gear.motorSpeed / vm.gear.gearRatio )) || '-' }}
+						</div>
+					</div>
+					<div class="row marginBottom-s" >
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							service factor
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{ (vm.gear.gearTorque / ((9550 * vm.gear.motorPower) / (vm.gear.motorSpeed / vm.gear.gearRatio ))) || '-' }}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							voltage (d/y) (v)
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{vm.gear.motorVoltage || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							rated current (d/y) (A)
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{vm.gear.motorCurrent || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							hollow shaft or output shaft (mm)
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{vm.gear.gearHollowOrOutputShaft || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							output flange dia. (mm)
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{ vm.gear.gearOutputFlange || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							motor shaft
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{vm.gear.motorShaft || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s" >
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							gear option
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{ vm.gear.gearOption || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							motor option
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{ vm.gear.motorOption || '-' }}
+						</div>
+					</div>
+				</div>
+				<div class="row marginTop-xm textAlign-right">
+					<div ng-if="vm.selected < 10" class="col-xs-12">
+						<div ng-click="vm.gear = null" style="border: none !important; box-shadow: none; text-decoration: underline;" class="button c-danger display-inline-block">
+							Cancel
+						</div>
+						<input type="submit" class="button button-primary display-inline-block" value="Submit" />
+					</div>
+					<div ng-if="vm.selected > 10" class="col-xs-12">
+						<input ui-sref="dashboard.machineAdd({id: vm.company_id, group: vm.group_id,selected:vm.gear.$id})" class="button button-primary display-inline-block" value="เลือก" />
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</div>

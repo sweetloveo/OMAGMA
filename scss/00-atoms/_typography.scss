@@ -1,0 +1,42 @@
+$font-primary: 'Kanit', sans-serif, Arial;
+$font-secondary: 'Thonburi', Arial, sans-serif;
+
+.fontFamily-primary { font-family: $font-primary; }
+.fontFamily-secondary { font-family: $font-secondary; }
+.fontFamily-menlo    { font-family: 'menlo'; }
+
+// Weight
+.fontWeight-3     { font-weight: 300; }
+.fontWeight-4     { font-weight: 400; }
+.fontWeight-5     { font-weight: 500; }
+.fontWeight-7     { font-weight: 700; }
+
+// Size
+.fontSize-xxs     { font-size: 12px; }
+.fontSize-xs      { font-size: 14px; }
+.fontSize-s       { font-size: 16px; }
+.fontSize-xm      { font-size: 20px; }
+.fontSize-m       { font-size: 24px; }
+.fontSize-l       { font-size: 30px; }
+.fontSize-xl      { font-size: 40px; }
+.fontSize-xxl     { font-size: 52px; }
+
+// Transform
+.textTransform-uppercase { text-transform: uppercase; }
+.textTransform-lowercase { text-transform: lowercase; }
+.textTransform-capitilze { text-transform: capitalize; }
+
+// Align
+.textAlign-left   { text-align: left; }
+.textAlign-center { text-align: center; }
+.textAlign-right  { text-align: right; }
+.textAlign-justify { text-align: justify; }
+
+.textDecoration-underline { text-decoration: underline; }
+
+.fontStyle-italic { font-style: italic; }
+.fontStyle-bold { font-style: bold; }
+
+.lh-1 { line-height: 1; }
+.lh-2 { line-height: 2; }
+.lh-3 { line-height: 3; }

@@ -1,0 +1,7 @@
+@mixin color_state($color) {
+  & { color: $color; }
+  &:focus { color: darken($color,15); }
+  &:visited { color: $color; }
+  &:active { color: darken($color,15); }
+  &:hover { color: darken($color,15); }
+}

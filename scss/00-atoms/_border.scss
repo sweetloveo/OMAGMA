@@ -1,0 +1,52 @@
+// Radius Size Scale
+@each $size in $scale-size {
+	$type: nth($size, 1);
+	$value: nth($size, 2);
+	.borderRadius-#{$type} 						{ border-radius: #{$value}; }
+	.borderTopRadius-#{$type} 				{ border-top-left-radius: #{$value}; border-top-right-radius: #{$value}; }
+	.borderBottomRadius-#{$type} 			{ border-bottom-left-radius: #{$value}; border-bottom-right-radius: #{$value}; }
+	.borderTopLeftRadius-#{$type} 		{ border-top-left-radius: #{$value}; }
+	.borderTopRightRadius-#{$type} 		{ border-top-right-radius: #{$value}; }
+	.borderBottomLeftRadius-#{$type} 	{ border-bottom-left-radius: #{$value}; }
+	.borderBottomRightRadius-#{$type} { border-bottom-right-radius: #{$value}; }
+	.borderWidth-#{$type} 						{ border-width: #{$value}; }
+	.borderTopWidth-#{$type} 					{ border-top-width: #{$value}; }
+	.borderBottomWidth-#{$type} 			{ border-bottom-width: #{$value}; }
+	.borderRightWidth-#{$type} 				{ border-right-width: #{$value}; }
+	.borderLeftWidth-#{$type} 				{ border-left-width: #{$value}; }
+}
+
+// Border Colors
+@each $cc in $colors {
+  $cc-type: nth($cc,1);
+  $cc-value: nth($cc,2);
+
+	.borderColor-#{$cc-type} {
+		& { border-color: #{$cc-value}; }
+		&--hover:hover { border-color: #{$cc-value}; }
+
+		@each $c-scale in $colors-scale {
+			$sc-type: nth($c-scale,1);
+			$sc-value: nth($c-scale,2);
+			@if ($sc-type == lt) or ($sc-type == l) {
+				&-#{$sc-type} { border-color: lighten($cc-value,$sc-value); }
+				&-#{$sc-type}--hover:hover { border-color: lighten($cc-value,$sc-value); }
+			} @else if ($sc-type == d) or ($sc-type == dk) {
+				&-#{$sc-type} { border-color: darken($cc-value,$sc-value); }
+				&-#{$sc-type}--hover:hover { border-color: darken($cc-value,$sc-value); }
+			}
+		}
+	}
+}
+.borderColor-transparent { border-color: transparent; }
+
+// Border Style
+.borderStyle-solid 			{ border-style: solid; }
+.borderStyle-dashed 			{ border-style: dashed; }
+
+// Border Radius Circle
+.borderRadius-circle 						{ border-radius: 50%; }
+.borderTopLeftRadius-circle	 		{ border-top-left-radius: 50%; }
+.borderTopRightRadius-circle 		{ border-top-right-radius: 50%; }
+.borderBottomLeftRadius-circle 	{ border-bottom-left-radius: 50%; }
+.borderBottomRightRadius-circle { border-bottom-right-radius: 50%; }

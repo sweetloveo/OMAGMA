@@ -1,0 +1,220 @@
+.tab {
+	&.-topic {
+		@extend .floatLeft;
+		@extend .borderTopWidth-5;
+		@extend .borderStyle-solid;
+		@extend .fontFamily-primary;
+		@extend .textAlign-center;
+		@extend .fontSize-xm;
+		@extend .bg-grey-l;
+		@extend .cursor-pointer;
+		border-color: transparent;
+		padding: 8px 10px 10px 10px;
+		border-right: 1px solid #dddddd;
+		border-bottom: 1px solid #dddddd;
+		br {
+			display: none;
+		}
+	}
+	&.-topic.-large {
+		padding: 22px 5px 24px 5px;		
+		width: (100%/2);
+	}
+	&.-topic.active {
+		@extend .borderColor-primary;
+		@extend .c-primary;
+		@extend .bg-white;
+		border-right: 1px solid #dddddd;
+		border-bottom: none;
+	}
+	&.-tabbox {
+		@extend .bg-white;
+		@extend .boxShadow-card;
+		@extend .c-font;
+	}
+}
+
+
+
+.tabLarge-image {
+		height: 135px;
+		width: 70px;
+		margin-left:auto;
+		margin-right: auto;
+
+		&.-money,
+		&.-interest,
+		&.-money-interest,
+		&.-refinance,
+		&.-decrease-interest,
+		&.-home-no-debt,
+		&.-Asset-19,
+		&.-person-compare,
+		&.-construction,
+		&.-house {
+			@extend .position-relative;
+			@extend .marginBottom-xm;
+			img {
+				width: 100%;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+			}
+		}
+		&.-refinance {
+			width: 100px;
+		}
+		&.-decrease-interest {
+			width: 200px;
+		}
+		&.-home-no-debt {
+			width: 110px;
+		}
+		&.-plus, &.-equa {
+			img {
+				width: 23px;
+				margin-top: 90px;
+			}
+		}
+		&.-arrow-short {
+			img {
+				width: 56px;
+				margin-top: 90px;
+				margin-left:30px;
+			}
+		}
+		&.-Asset-19 {
+			width: 130px;
+		}
+		&.-person-compare {
+			width: 150px;
+			img {
+				width: 135px;
+			}
+		}
+
+		&.-construction,
+		&.-house {
+			width: 130px;
+		}
+	}
+
+
+@media screen and (max-width: 1220px) {
+	.tab {
+		&.-topic {
+			font-size: 16px;
+		}
+	}
+}
+
+@media screen and (max-width: 992px) {
+	.tab {
+		&.-topic.-large {
+			border-left: 1px solid #dddddd;
+			border-top: 1px;
+			float: none;
+			width: 100% !important;
+			text-align: left;
+			padding: 18px;
+			padding-left: 23px;
+			position: relative;
+			&:after {
+				content: '+';
+				color: #aaaaaa;
+				position: absolute;
+				right: 23px;
+				font-size: 24px;
+				top: 11px;
+			}
+		}
+		&.-topic.-large.active {
+			border-left: 5px solid #0193D7;
+			border-right: 1px solid #dddddd;
+			border-bottom: 1px solid #dddddd;
+			padding-left: 18px;
+			&:after {
+				content: '-';
+			}
+		}
+		.tabLarge-image {
+			width: 50px;
+			&.-person-compare {
+				width: 100px;
+				img {
+					width: 100%;
+				}
+			}
+			&.-construction,
+			&.-house {
+				width: 100px;
+			}
+			&.-home-no-debt,
+			&.-Asset-19 {
+				width: 100px;
+			}
+			&.-arrow-short {
+				img {
+					width: 40px;
+					margin-left: 30px;
+				} 
+			}
+			&.-refinance, &.-money-interest {
+				width: 70px;
+			}
+			&.-decrease-interest {
+				width: 150px;
+			}
+			& + p {
+				font-size: 14px;
+			}
+			&.-plus, &.-equa {
+				img {
+					width: 20px;
+					margin-top: 90px;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 492px) {
+	.tab {
+		&.-tabbox.-large {
+			.button {
+				width: 100%;
+				max-width: none !important;
+			}
+		}
+		.tabLarge-image {
+			width: 40px;
+			height: 90px;
+			&.-money-interest  {
+				width: 50px;
+			}
+			&.-refinance,{
+				width: 70px;
+			}
+			&.-decrease-interest {
+				width: 150px;
+			}
+			& + p {
+				font-size: 11px;
+			}
+			&.-arrow-short {
+				img {
+					margin-left: 15px;
+					margin-top: 40px;
+				}
+			}
+			&.-plus, &.-equa {
+				width: 20px;
+				img {
+					width: 15px;
+					margin-top: 60px;
+				}
+			}
+		}
+		
+	}
+}

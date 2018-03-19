@@ -1,0 +1,37 @@
+$colors-scale:
+  (lt 20)
+  (l 30)
+  (d 10)
+  (dk 20);
+
+$colors:
+  (primary #0193D7)
+  (secondary #056AAF)
+  (black #000000)
+  (white #ffffff)
+  (font #4A4A4A)
+  (grey #d8d8d8)
+  (grey-l #f8f8f8)
+  (success #8ec655)
+  (danger #f44336)
+  (footer-l #3d3d3d)
+  (footer-d #252525);
+
+
+@each $cc in $colors {
+  $cc-type: nth($cc,1);
+  $cc-value: nth($cc,2);
+
+  .c-#{$cc-type} {
+    & { color : #{$cc-value}; }
+    // @each $c-scale in $colors-scale {
+    //   $sc-type: nth($c-scale,1);
+    //   $sc-value: nth($c-scale,2);
+    //   @if ($sc-type == lt) or ($sc-type == l) {
+    //     &-#{$sc-type} { color: lighten($cc-value,$sc-value); }
+    //   } @else if ($sc-type == d) or ($sc-type == dk) {
+    //     &-#{$sc-type} { color: darken($cc-value,$sc-value); }
+    //   }
+    // }
+  }
+}

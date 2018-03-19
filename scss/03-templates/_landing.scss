@@ -1,0 +1,237 @@
+.menu-hamburger {
+	@extend .cursor-pointer;
+	top: 153px;
+	right: 13px;
+	padding: 18px 0;
+	span {
+		width: 20px;
+		height: 3px;
+		background-color: #4a4a4a;
+		margin: 3px 0 3px auto;
+		display: block;
+	}
+}
+
+.landing {
+	.row {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.navigation {
+		padding: 9px 0;
+	}
+	.header {
+		@extend .bg-grey;
+		@extend .backgroundPos-center;
+		@extend .backgroundSize-cover;
+		@extend .paddingBottom-xl;
+		min-height: 750px;
+
+		.header-content {
+			margin-top: 170px;
+			.title {
+				@extend .fontFamily-primary;
+				@extend .fontSize-xl;
+			}
+			.detail {
+				@extend .fontFamily-secondary;
+				@extend .fontSize-xm;
+				@extend .fontWeight-3;
+				@extend .marginBottom-xm;
+			}
+		}
+
+		.tabbox , .tabbox * {
+			@extend .transitionProperty-all;
+			@extend .transitionDuration-s;
+			@extend .transitionTimingFn-linear;
+		}
+
+		&.-tab-1 {
+			background-image: url('/landing-c/assets/Images/bg-default.jpg')
+		}
+		&.-tab-2 {
+			@extend .backgroundPos-bottom;
+			background-image: url('/landing-c/assets/Images/bg-refinance.jpg');
+		}
+		&.-tab-3 {
+			background-image: url('/landing-c/assets/Images/bg-nh.jpg')
+		}
+		.tab.-tabbox {
+			margin-top: 100px;
+			min-height: 300px;
+			max-width: 500px;
+			margin-left: auto;
+		}
+	}
+
+	.services {
+		@extend .bg-white;
+		@extend .padding-m;
+	}
+	.success-story-item {
+		.story {
+			&.-vdo {
+				@extend .bg-grey;
+				height: 350px;
+				width: 100%;
+			}
+			&.-content {
+				@extend .display-flex;
+				flex-direction: column;
+				height: 350px;
+				justify-content: center
+			}
+		}
+	}
+	.statistics {
+		@extend .bg-white;
+		@extend .paddingTopBottom-xl;
+		@extend .paddingLeftRight-m;
+		.stats {
+			@extend .textAlign-center;
+			&.-left {
+				border-right: 2px solid #d3d8e0;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 992px) {
+	.landing .services {
+		padding-left: 0;
+		padding-right: 0;
+		box-shadow: none;
+		border: 1px solid #d8d8d8;
+		.container {
+			width: 97%;
+		}
+	}
+}
+
+@media screen and (max-width: 769px) {
+	.landing .header {
+		.header-content {
+			margin-top: 50px;
+			text-align: center;
+
+			.title {
+				font-size: 26px;
+			}
+			.detail {
+				font-size: 16px;
+			}
+			.button {
+				display: none;
+			}
+		}
+		.tab.-tabbox {
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 30px;
+		}
+	}
+	.landing .success-story-item {
+		.story.-content {
+			height: 120px;
+		}
+	}
+	.landing .statistics .stats.-left {
+		border-right: none;
+		border-bottom: 2px solid #d3d8e0;
+	}
+}
+
+@media screen and (max-width: 492px) {
+	.landing .header {
+		min-height: 750px;
+		.tab.-topic {
+			font-family: $font-secondary;
+			height: 70px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			br {
+				display: block;
+			}
+		}
+	}
+	.landing .success-story-item {
+		.story.-vdo {
+			height: 180px;
+		}
+	}
+	.landing .medias br {
+		display: none;
+	}
+	.landing .medias img {
+		width: 25%;
+		height: auto !important;
+	}
+}
+
+
+
+/** MOBILE MENU */
+.mobileWrap {
+	width: 100vw;
+	position: absolute;
+	top: 0;
+	transition: right, top .5s cubic-bezier(0.65, 0.05, 0.36, 1);
+	-o-transition: right, top .5s cubic-bezier(0.65, 0.05, 0.36, 1);
+	-moz-transition: right, top .5s cubic-bezier(0.65, 0.05, 0.36, 1);
+	-webkit-transition: right, top .5s cubic-bezier(0.65, 0.05, 0.36, 1);  
+}
+.mobileWrap.-promoOff {
+	top: -74px;
+}
+.mobileWrap.-promoOff .menu-hamburger {
+	top: 6px;
+}
+.-mobileOn {
+	right: 250px;
+}
+.-mobileOff {
+	right: 0;    
+}
+@media screen and (max-width: 769px) {
+	.-mobileOn .menuMobile {
+		right: 0;
+	}
+	.mobileWrap.-promoOff {
+		top: 0;
+	}
+	.mobileWrap.-promoOff .promo-bar {
+		display: none;
+	}
+	.mobileWrap.-promoOff .promo-bar .promo-close {
+		position: absolute;
+    right: 15px;
+		top: 12px;
+	}
+	.menuMobile {
+		position: fixed;
+		top: 0;
+		right: -250px;
+		width: 250px;
+		height: 100vh;
+		background: #414a61;
+		padding: 30px 0 0 0;
+		transition: right, top .5s cubic-bezier(0.65, 0.05, 0.36, 1);
+		-o-transition: right, top .5s cubic-bezier(0.65, 0.05, 0.36, 1);
+		-moz-transition: right, top .5s cubic-bezier(0.65, 0.05, 0.36, 1);
+		-webkit-transition: right, top .5s cubic-bezier(0.65, 0.05, 0.36, 1);  
+	}
+	.menuMobile a {
+		color: #ffffff !important;
+		display: block;
+		border: none;
+		text-align: center;
+		margin: 0;
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+	.menuMobile a:hover {
+		background-color: #1E232E;
+	}
+}

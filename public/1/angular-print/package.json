@@ -1,0 +1,94 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "angular-print",
+        "scope": null,
+        "escapedName": "angular-print",
+        "name": "angular-print",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/admin/Desktop/pj/public"
+    ]
+  ],
+  "_from": "angular-print@latest",
+  "_id": "angular-print@0.3.8",
+  "_inCache": true,
+  "_location": "/angular-print",
+  "_nodeVersion": "8.1.3",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/angular-print-0.3.8.tgz_1499258207552_0.06633786763995886"
+  },
+  "_npmUser": {
+    "name": "ravshansbox",
+    "email": "ravshansbox@gmail.com"
+  },
+  "_npmVersion": "5.0.4",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "angular-print",
+    "scope": null,
+    "escapedName": "angular-print",
+    "name": "angular-print",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/angular-print/-/angular-print-0.3.8.tgz",
+  "_shasum": "f5325826913b4f1dda55785fc7b56c39dc294213",
+  "_shrinkwrap": null,
+  "_spec": "angular-print",
+  "_where": "/Users/admin/Desktop/pj/public",
+  "author": {
+    "name": "Sam Duzett",
+    "email": "samuel.duzett@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/samwiseduzer/angularPrint/issues"
+  },
+  "dependencies": {},
+  "description": "Angular module that allows the user to selectively print, as well as provides optimizations for printing a table.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-FUqgDOrKZ4YGkHjep+Z+hYzKBmE5X7EIFxEnpXAjb5AEjENUvAx8cbzWJYfaOArDsmrlsfBciTlOxPA9Wq0Qsg==",
+    "shasum": "f5325826913b4f1dda55785fc7b56c39dc294213",
+    "tarball": "https://registry.npmjs.org/angular-print/-/angular-print-0.3.8.tgz"
+  },
+  "gitHead": "333bb45e182ad3d052b6bdd6b19f1187e3a377c9",
+  "homepage": "https://github.com/samwiseduzer/angularPrint#readme",
+  "keywords": [
+    "angular",
+    "angularJS",
+    "print",
+    "media",
+    "query",
+    "table",
+    "select"
+  ],
+  "license": "MIT",
+  "main": "angularPrint.js",
+  "maintainers": [
+    {
+      "name": "ravshansbox",
+      "email": "ravshansbox@gmail.com"
+    }
+  ],
+  "name": "angular-print",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samwiseduzer/angularPrint.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.3.8"
+}

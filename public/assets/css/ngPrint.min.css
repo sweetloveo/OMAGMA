@@ -1,0 +1,54 @@
+@media screen {
+	#printSection {
+		display: none
+	}
+}
+
+@media print {
+	body * {
+		display: none
+	}
+	#printSection {
+		display: inline
+	}
+	#printSection {
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+	#printSection * {
+		display: inline-block;
+	}
+	table {
+		width: 100% !important;
+		display: block !important;
+		height: 100% !important;
+		overflow: hidden;
+	}
+	table thead,
+	table tbody {
+		display: table !important;
+		width: 100%;
+    table-layout: fixed;
+	}
+	table tr {
+		display: table-row !important;
+	}
+	table th,
+	table td {
+		display: table-cell !important;
+		font-size: 10px;
+		border: 1px solid #eee;
+		padding: 0;
+	}
+	table.table-description td:nth-child(3),
+	table.table-description td:nth-child(4),
+	table tr th:nth-child(7),
+	table tr th:nth-child(8),
+	table tr th:nth-child(9),
+	table tr td:nth-child(7),
+	table tr td:nth-child(8),
+	table tr td:nth-child(9) {
+		display: none !important;
+	}
+}
