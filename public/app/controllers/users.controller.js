@@ -133,7 +133,7 @@
 				.then(function(data) {
 					vm.companies = data;
 					vm.companies.push({name:'Add company'},{name:'-'});
-					console.log(vm.companies);
+
 				})
 		}
 
@@ -144,10 +144,8 @@
                 {name:company}
             )
                 .then(function(data) {
-                    console.log(data);
                 })
                 .catch(function(error) {
-                    console.log(error);
                 })
         }
 

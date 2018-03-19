@@ -48,8 +48,6 @@
 									.ref('/company/'+ vm.report.company.$id+'/group/'+data2[i2].$id+'/machine');
 								var obj3 = $firebaseArray(ref3);
 								await obj3.$loaded().then(async function (data3) {
-									//console.log('Group'+data2[i2].$id+'ของCompany:'+i+'|Group in >');
-									//console.log(data3);
 									for(let i3=0;i3<=data3.length-1;i3++){
 
 										var ref4 = firebase.database()
@@ -139,7 +137,6 @@
 				vm.user = Users.get(vm.authData);
 				vm.user.$loaded()
 					.then(function(user) {
-						console.log('ล็อกอินมาด้วย:: '+vm.authData.email);
 					})
 			} else {
 				$state.go('login');
