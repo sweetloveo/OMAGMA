@@ -182,7 +182,7 @@
 									.then(function() {
 										console.log(user);
 
-                                        $http.get("https://us-central1-omagma-abe44.cloudfunctions.net/addMessage?text="+user.$id)
+                                        $http.get("https://us-central1-omagma-abe44.cloudfunctions.net/deleteUser?text="+user.$id)
                                             .then(function(response) {
                                             	console.log(response);
                                                 swal("Deleted!", "Your data has been deleted.", "success");
