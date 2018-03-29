@@ -41,10 +41,11 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-12">
-							<table class="width-100 sticky" id="print">
+						<div class="col-xs-12" id="print" >
+							<table class="width-100 sticky" style="display: none"><thead><th class="padding-xs"><a class="cursor-pointer fontSize-s fontStyle-bold "><p style="color: #002faa;display: inline;font-weight: bold">Company:</p> {{vm.selectedCompany.name}} </a></th><th><a class="fontSize-s fontStyle-bold cursor-pointer"><p style="color: #002faa;display: inline;font-weight: bold">Line:</p> {{vm.group.name}}</a></th></th></thead><tbody><td></td></tbody></table>
+							<table class="width-100 sticky">
 								<thead class="fontWeight-7 textAlign-left">
-								<th ng-click="vm.setGearOrderBy('data.groupno')" class="cursor-pointer padding-s">
+								<th ng-click="vm.setGearOrderBy('data.groupno')" class="cursor-pointer padding-s" >
 									<div>
 										Status
 										<i
@@ -150,7 +151,7 @@
 											<span class="txt-overflow" >{{ gearmotor.data.machineno }}</span>
 										</td>
 										<td class="padding-s">
-											<span class="txt-overflow" >{{ gearmotor.data.type }}</span>
+											<span class="txt-overflow" >{{  gearmotor.data.gearType.gearType}}</span>
 										</td>
 										<td class="padding-s">
 											<span class="txt-overflow" >{{ gearmotor.data.power }}</span>
@@ -164,6 +165,9 @@
 										<td class="textAlign-center padding-s">
 											<a ui-sref="dashboard.machineDescription({id: vm.company_id, group: vm.group_id, machineId: gearmotor.id})" class="link link-primary">
 												View
+											</a>
+											<a ng-if="gearmotor.data.gearmotor !== ''" ui-sref="dashboard.machineEdit({id: vm.company_id, group: vm.group_id, machineId: gearmotor.data_id, selected:gearmotor.data.gearmotor})" class="link link-primary">
+												/ Edit
 											</a>
 										</td>
 										<td class="textAlign-center padding-s">

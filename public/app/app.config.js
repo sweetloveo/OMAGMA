@@ -114,13 +114,13 @@
 			controller: 'machineAddCtrl',
 			controllerAs: 'vm'
 		}
-		var machineEdit = {
-			name: 'dashboard.machineEdit',
-			url: '/company/:id/:group/machine/add/:selected/:machine',
-			templateUrl: 'pages/company/machine-add.html',
-			controller: 'machineAddCtrl',
-			controllerAs: 'vm'
-		}
+        var machineEdit = {
+            name: 'dashboard.machineEdit',
+            url: '/company/:id/:group/machine/edit/:machineId/:selected',
+            templateUrl: 'pages/company/machine-add.html',
+            controller: 'machineAddCtrl',
+            controllerAs: 'vm'
+        }
 
 		$stateProvider.state(login);
 		$stateProvider.state(signup);

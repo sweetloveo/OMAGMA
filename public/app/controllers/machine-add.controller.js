@@ -13,7 +13,7 @@
 
 		vm.company_id = $stateParams.id;
 		vm.group_id = $stateParams.group;
-		vm.machineedit = $stateParams.machine;
+		vm.machine_id = $stateParams.machineId;
 		vm.selected = $stateParams.selected;
 		vm.machine = {};
 		vm.datenow = moment().format("DD/MM/YYYY");
@@ -23,12 +23,14 @@
 
 		getCurrentSelected();
 
-		if (vm.machineedit)
+		if (vm.machine_id)
 		{
-            var ref = firebase.database().ref('/GearmotorMachine').child($stateParams.machine);
+            var ref = firebase.database().ref('/GearmotorMachine').child($stateParams.machineId);
             var obj = $firebaseObject(ref);
             obj.$loaded().then(function (data) {
+
                 vm.machine = data;
+                console.log(vm.machine);
 			})
 
 		}
@@ -44,12 +46,15 @@
                 vm.machine.activate = 'True';
 				vm.machine.type =  vm.gear.driveType;
 				vm.machine.ratio = vm.gear.gearRatio;
-				vm.machine.speed = vm.gear.motorSpeed / vm.gear.gearRatio;
-				vm.machine.torque = ((9550 * vm.gear.motorPower) / (vm.gear.motorSpeed / vm.gear.gearRatio ));
-				vm.machine.sf = (vm.gear.gearTorque / ((9550 * vm.gear.motorPower) / (vm.gear.motorSpeed / vm.gear.gearRatio )));
+				vm.machine.speed = vm.gear.opspeed;
+				vm.machine.torque = vm.gear.optorque;
+				vm.machine.sf = vm.gear.sf;
 				vm.machine.voltagesystem = 230/400;
 				vm.machine.ratedcurrent = vm.gear.motorVoltage;
 				vm.machine.gearmotor = $stateParams.selected;
+                vm.machine.ratedcurrent = vm.gear.motorVoltageD+'/'+vm.gear.motorVoltageY;
+                vm.machine.motorflange = vm.gear.gearOutputFlange;
+                vm.machine.shaftflange = vm.gear.gearHollowOrOutputShaft+'/'+vm.gear.gearOutputFlange;
 
                 cfpLoadingBar.complete();
 
@@ -58,14 +63,13 @@
 
 
         function addMachine() {
-
+console.log(vm.machine);
                var ref = firebase.database().ref('/GearmotorMachine');
                var obj = $firebaseArray(ref);
                obj.$add(
 				   vm.machine
 			   )
                    .then(function(gear) {
-					   console.log('IDIDJAAAAAA------||'+gear.toString().slice(53,73));
 					   var ref = firebase.database().ref('/company').child(vm.company_id).child('/group').child(vm.group_id).child('/machine');
 					   var obj = $firebaseArray(ref);
 					   obj.$add(
@@ -80,10 +84,15 @@
                        swal("Error", error, "error");
                    });
 		   }
-
 			function editMachine() {
 
-                vm.machine.activate = 'True';
+			console.log(vm.machine.gearmotor +'/'+ vm.gear.$id);
+
+				if(vm.machine.gearmotor !== vm.gear.$id){
+                    vm.machine.activate = 'True';
+                    vm.machine.gearmotor = vm.gear.$id;
+
+				}
                 vm.machine.Overhaul = moment().format("DD/MM/YYYY");
                 vm.machine.$save().then(function (data) {
                     swal("Saved success!", "Machine has been edited", "success");

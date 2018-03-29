@@ -91,7 +91,7 @@
 						</tr>
 						<tr>
 							<td class="fontWeight-7 padding-xs">Type</td>
-							<td class="padding-xs">{{ vm.gear_data.type }}</td>
+							<td class="padding-xs">{{ vm.gear_data.gearType }}</td>
 						</tr>
 						<tr>
 							<td class="fontWeight-7 padding-xs">Power [KW]</td>
@@ -183,7 +183,7 @@
 										<div ng-if="vm.user.profile.level == 'admin'" class="delete" ng-click="vm.deleteGearDetail('images', image)">
 											<i class="ion-trash-b"></i>
 										</div>
-										<img ng-click="vm.imageModal.show = true; vm.imageModal.image = image;" class="width-100 cursor-pointer" ng-src="{{image.url}}"/>
+										<img ng-click="vm.imageModal.show = true; vm.imageModal.image = image;" class="width-50 cursor-pointer" ng-src="{{image.url}}"/>
 									</div>
 								</div>
 
@@ -320,7 +320,7 @@
 			</div>
 			<div class="row marginTop-xm">
 				<div class="col-xs-8 col-xs-offset-4">
-					<div ui-sref="dashboard.machineEdit({id: vm.company_id, group: vm.group_id,selected:vm.gearselected.$id,machine:vm.gear_data.$id})" class="button button-primary c-white button-m display-inline-block" style="border-color: transparent!important; padding: 5px;">
+					<div ui-sref="dashboard.machineEdit({id: vm.company_id, group: vm.group_id,selected:vm.gearselected.$id,machineId:vm.gear_data.$id})" class="button button-primary c-white button-m display-inline-block" style="border-color: transparent!important; padding: 5px;">
 						select
 					</div>
 				</div>

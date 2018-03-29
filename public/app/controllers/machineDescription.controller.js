@@ -84,6 +84,16 @@
 
 
         }
+        function getGearttype(KEY) {
+            var ref = firebase.database().ref('/gearmotor').child(KEY);
+            var obj = $firebaseObject(ref);
+            return obj.$loaded()
+                .then(function(gearmotors) {
+                    console.log(gearmotors);
+
+                    return gearmotors
+                });
+        }
 
 		function getCurrentGear(company_id) {
 			var ref = firebase.database().ref('/company/' + company_id + '/group/' + vm.group_id + '/machine/' + vm.machine_id);
@@ -130,8 +140,14 @@
                 return k === vm.gear.id;
 			});
             vm.gear_data.$id = keyy;
+            var a = getGearttype(vm.gear_data.gearmotor);
+            a.then(function (value) {
+                vm.gear_data.gearType = value.gearType;
+				console.log(vm.gear_data)
+            })
+
 		}
-		console.log(vm.gear.id)
+
 
 		function deletemachine() {
 

@@ -356,6 +356,38 @@
 												</div>
 											</div>
                     </div>
+					<div class="margin-0 borderTopWidth-1 borderBottomWidth-1 borderStyle-solid borderColor-foreground">
+						<div class="row paddingTopBottom-s">
+							<div class="col-xs-4">
+								<div class="input">
+									<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+										Output speed
+									</label>
+									</br>
+									<input required ng-model="vm.gear.opspeed" type="text" >
+								</div>
+							</div>
+							<div class="col-xs-4">
+								<div class="input">
+									<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+										Output torque
+									</label>
+									</br>
+									<input required ng-model="vm.gear.optorque" type="text" >
+								</div>
+							</div>
+							<div class="col-xs-4">
+								<div class="input">
+									<label class="textTransform-uppercase fontFamily-primary-bold fontSize-xs c-grey" for="drivetype">
+										service factor
+									</label>
+									</br>
+									<input required ng-model="vm.gear.sf" type="text" >
+								</div>
+							</div>
+						</div>
+
+					</div>
 
                 </div>
             </div>
@@ -403,18 +435,18 @@
 					</div>
 					<div class="row marginBottom-s">
 						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
-							output speed
+							output speed (RPM)
 						</div>
 						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
-							{{ vm.Outputspeed(vm.gear.motorSpeed,vm.gear.gearRatio) || '-'  }}
+							{{ vm.gear.opspeed || '-'  }}
 						</div>
 					</div>
 					<div class="row marginBottom-s">
 						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
-							output torque
+							output torque (Nm)
 						</div>
 						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
-							{{ vm.opt(vm.gear.motorPower,vm.gear.effic,vm.gear.motorSpeed,vm.gear.gearRatio )|| '-' }}
+							{{ vm.gear.optorque || '-' }}
 						</div>
 					</div>
 					<div class="row marginBottom-s" >
@@ -422,7 +454,7 @@
 							service factor
 						</div>
 						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
-							{{ vm.svf(vm.gear.gearTorque,vm.opt(vm.gear.motorPower,vm.gear.effic,vm.gear.motorSpeed,vm.gear.gearRatio )) || '-' }}
+							{{ vm.gear.sf || '-' }}
 						</div>
 					</div>
 					<div class="row marginBottom-s">
@@ -443,7 +475,7 @@
 					</div>
 					<div class="row marginBottom-s">
 						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
-							rated current (d/y) (A)
+							rated current (AT 400 V)
 						</div>
 						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
 							{{vm.gear.motorCurrent || '-'}}

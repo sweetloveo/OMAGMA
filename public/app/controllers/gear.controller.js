@@ -62,12 +62,17 @@
                      if(data[i].gearmotor === gear.$id){
                          count++;
                          data[i].activate = 'False';
+                         data[i].gearmotor = '';
                          console.log(data[i].$id+' == '+gear.$id);
                          obj.$save(data[i]).then(function (value) {
                              swal(" Saved complete!", "Affect to Machine "+count+" unit", "success"); })
 
                      }
 
+                 }
+                 if(count === 0)
+                 {
+                     swal(" Saved complete!", "save gearmotor completed!", "success");
                  }
             }
             )
@@ -252,9 +257,26 @@
                     cfpLoadingBar.complete();
 				})
 		}
-		function Deletegear(data) {
-			vm.gearformdb.$remove(data).then(function (data) {
-				swal("Deleted!", "This gearmotor has been deleted.", "success");
+		function Deletegear(id) {
+			vm.gearformdb.$remove(id).then(function (value) {
+                    var ref = firebase.database().ref('/GearmotorMachine');
+                    var obj = $firebaseArray(ref)
+                    obj.$loaded().then(function (data) {
+                            var count =0;
+                            for(var i=0;i<=data.length-1;i++){
+
+                                if(data[i].gearmotor === id.$id){
+                                    count++;
+                                    data[i].activate = 'False';
+                                    console.log(data[i].$id+' == '+id.$id);
+                                    obj.$save(data[i]).then(function (value) {
+                                        swal(" Deleted complete!", "Affect to Machine "+count+" unit", "success"); })
+
+                                }
+
+                            }
+                        }
+                    )
 
 			})
 

@@ -16,6 +16,7 @@
 		vm.selected = $stateParams.selected;
 		vm.group = {};
 		vm.gearmotors = [];
+		vm.getGearttype = getGearttype;
 		vm.gearOrderBy = 'data.machineno.value';
 		
 		vm.setGearOrderBy = setGearOrderBy;
@@ -28,7 +29,16 @@
                 $state.go('login');
             }
         });
+		function getGearttype(KEY) {
+            var ref = firebase.database().ref('/gearmotor').child(KEY);
+            var obj = $firebaseObject(ref);
+            return obj.$loaded()
+                .then(function(gearmotors) {
+                	console.log(gearmotors);
 
+                    return gearmotors
+                });
+        }
 		getCurrentCompany(vm.company_id);
 
 		function getCurrentCompany(company_id) {
@@ -61,11 +71,22 @@
 				return {
 					id: key,
 					data: gear[val.id],
+					data_id: val.id,
 					maintenance_url: (maintenance) ? maintenance.url : '',
 					checkup_url: (checkup) ? checkup.url : '',
 				};
 			});
+
 			console.log(vm.gearmotors)
+			for(let loop = 0;loop<=vm.gearmotors.length-1;loop++)
+			{
+                var a = getGearttype(vm.gearmotors[loop].data.gearmotor);
+                a.then(function (value) {
+                    console.log(value);
+                    vm.gearmotors[loop].data.gearType = value;
+					console.log(vm.gearmotors[loop].data.gearType)
+				});
+			}
 		}
 
 		function setGearOrderBy(order) {

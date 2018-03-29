@@ -62,6 +62,7 @@
 				.then(function(data) {
 					console.log(data);
 					swal("Good job!", "Company has been added", "success");
+                    vm.showAddCompany = false;
 				})
 				.catch(function(error) {
 					console.log(error);

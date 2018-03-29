@@ -44,8 +44,9 @@
 								<i></i>
 							</div>
 								</div>
-							<div ng-hide="group.edit" ng-if="vm.user.profile.level == 'admin'" ng-click="group.edit = true;" class="button bg-grey c-white button-m display-inline-block" style="border-color: transparent!important; padding: 1px 5px;"><i  class="ion-ios-compose-outline fontSize-m " ></i></div>
-							<i ng-show="group.edit"  class="ion-android-create fontSize-m c-grey c-danger--hover" ng-click="group.edit = '';vm.selectedCompany.$save(group);"></i>
+							<div ng-hide="group.edit" ng-if="vm.user.profile.level == 'admin'" ng-click="group.edit = true;" class="button bg-grey c-white button-m display-inline-block" style="border-color: transparent!important; padding: 1px 5px;">
+								<i  class="ion-ios-compose-outline fontSize-m " ></i></div>
+								<i ng-show="group.edit"  class="ion-android-create fontSize-m c-grey c-danger--hover" ng-click="group.edit = '';vm.selectedCompany.$save(group);"></i>
                             <div ng-show="group.edit" ng-if="vm.user.profile.level == 'admin'" ng-click="vm.deletegroup(key);" class="marginRight-s display-inline-block">
                                 <i class="fontSize-m c-grey">/</i> <i class="ion-trash-a fontSize-m c-grey c-danger--hover"></i>
                             </div>

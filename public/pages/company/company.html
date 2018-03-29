@@ -19,13 +19,19 @@
                     </div>
                     <div ng-if="vm.user.profile.company.name == company.name || vm.user.profile.level == 'admin'|| vm.user.profile.level == 'editor'" ng-repeat="company in vm.companies"class="row margin-0 bg-foreground--hover paddingTopBottom-s borderTopWidth-1 borderStyle-solid borderColor-foreground">
                         <div class="col-xs-6">
-                            <div class="fontFamily-primary-bold textTransform-capitilze" style="margin-top: 7px;">
+                            <div ng-hide="company.edit" class="fontFamily-primary-bold textTransform-capitilze" style="margin-top: 7px;">
                                 {{company.name}}
+                            </div>
+                            <div ng-show="company.edit"  class="col-xs-6">
+                                <input ng-model="company.name" type="text" class="display-inline-block">
                             </div>
                         </div>
                         <div class="col-xs-6 textAlign-right">
-                            <div ng-if="vm.user.profile.level == 'admin'" ng-click="vm.deleteCompany(company)" class="marginRight-s display-inline-block">
-                                <i class="ion-trash-a fontSize-m c-grey c-danger--hover"></i>
+                            <div ng-hide="company.edit" ng-if="vm.user.profile.level == 'admin'" ng-click="company.edit = true;" class="button bg-grey c-white button-m display-inline-block" style="border-color: transparent!important; padding: 1px 5px;">
+                                <i  class="ion-ios-compose-outline fontSize-m " ></i></div>
+                            <i ng-show="company.edit"  class="ion-android-create fontSize-m c-grey c-danger--hover" ng-click="company.edit = '';vm.companies.$save(company);"></i>
+                            <div ng-show="company.edit" ng-if="vm.user.profile.level == 'admin'" ng-click="vm.deleteCompany(company)" class="marginRight-s display-inline-block">
+                                <i class="fontSize-m c-grey">/</i> <i class="ion-trash-a fontSize-m c-grey c-danger--hover"></i>
                             </div>
                             <div ui-sref="dashboard.companySingle({id: company.$id})"class="button bg-grey c-white button-m display-inline-block" style="border-color: transparent!important; padding: 1px 5px;">
                                 <i class="ion-document-text fontSize-m"></i>
