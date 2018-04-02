@@ -271,7 +271,7 @@
 							output speed
 						</div>
 						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
-							{{ vm.gear.motorSpeed / vm.gear.gearRatio || '-'  }}
+							{{ vm.gear.opspeed || '-'  }}
 						</div>
 					</div>
 					<div class="row marginBottom-s">
@@ -279,7 +279,7 @@
 							output torque
 						</div>
 						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
-							{{ ((9550 * vm.gear.motorPower) / (vm.gear.motorSpeed / vm.gear.gearRatio )) || '-' }}
+							{{vm.gear.optorque || '-'}}
 						</div>
 					</div>
 					<div class="row marginBottom-s" >
@@ -287,15 +287,23 @@
 							service factor
 						</div>
 						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
-							{{ (vm.gear.gearTorque / ((9550 * vm.gear.motorPower) / (vm.gear.motorSpeed / vm.gear.gearRatio ))) || '-' }}
+							{{ vm.gear.sf || '-' }}
 						</div>
 					</div>
 					<div class="row marginBottom-s">
 						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
-							voltage (d/y) (v)
+							voltage (D) (v)
 						</div>
 						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
-							{{vm.gear.motorVoltage || '-'}}
+							{{vm.gear.motorVoltageD || '-'}}
+						</div>
+					</div>
+					<div class="row marginBottom-s">
+						<div class="col-xs-6 fontFamily-primary-bold textTransform-uppercase">
+							voltage (Y) (v)
+						</div>
+						<div class="col-xs-6 fontFamily-primary textAlign-right" style="word-wrap: break-word">
+							{{vm.gear.motorVoltageY || '-'}}
 						</div>
 					</div>
 					<div class="row marginBottom-s">
