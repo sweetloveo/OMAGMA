@@ -48,9 +48,10 @@
 				vm.machine.ratio = vm.gear.gearRatio;
 				vm.machine.speed = vm.gear.opspeed;
 				vm.machine.torque = vm.gear.optorque;
+				vm.machine.ratedcurrent = vm.gear.motorCurrent;
 				vm.machine.sf = vm.gear.sf;
 				vm.machine.gearmotor = $stateParams.selected;
-                vm.machine.ratedcurrent = vm.gear.motorVoltageD+'/'+vm.gear.motorVoltageY;
+                vm.machine.voltagesystem = vm.gear.motorVoltageD+'/'+vm.gear.motorVoltageY;
                 vm.machine.motorflange = vm.gear.gearOutputFlange;
                 vm.machine.shaftflange = vm.gear.gearHollowOrOutputShaft+'/'+vm.gear.gearOutputFlange;
 
