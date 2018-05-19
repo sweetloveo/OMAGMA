@@ -39,7 +39,9 @@
 							Overhual Date
 						</div>
 						<div class="col-xs-3">
-							{{vm.datenow}}
+							<datepicker date-format="dd/MM/yyyy">
+							<input required ng-model="vm.datenow" class="bg-foreground padding-xs borderWidth-0 width-100" type="text" placeholder="เลือกวันที่เริ่มต้น"/>
+							</datepicker>
 						</div>
 					</div>
 

@@ -41,7 +41,7 @@
 			var obj = $firebaseObject(ref);
 			obj.$loaded().then(function (data) {
 				vm.gear = data;
-                vm.machine.Overhaul = moment().format("DD/MM/YYYY");
+                vm.machine.Overhaul = vm.datenow;
 				vm.machine.power = vm.gear.motorPower;
                 vm.machine.activate = 'True';
 				vm.machine.type =  vm.gear.driveType;

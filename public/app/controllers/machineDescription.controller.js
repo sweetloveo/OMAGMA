@@ -143,6 +143,7 @@
             var a = getGearttype(vm.gear_data.gearmotor);
             a.then(function (value) {
                 vm.gear_data.gearType = value.gearType;
+                vm.gear_data.motorType = value.motorType;
 				console.log(vm.gear_data)
             })
 

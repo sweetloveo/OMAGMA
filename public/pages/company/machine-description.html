@@ -36,8 +36,8 @@
 							<td class="fontWeight-7 padding-xs textAlign-center">Checkup History (latest)</td>
 						</tr>
 						<tr>
-							<td class="fontWeight-7 padding-xs">DATE OF RECORD</td>
-							<td class="padding-xs">1-Sep-17</td>
+							<td class="fontWeight-7 padding-xs">DATE OF Overhaul</td>
+							<td class="padding-xs">{{vm.gear_data.Overhaul}}</td>
 							<td class="padding-xs textAlign-center">
 								<span ng-show="vm.maintenance[vm.maintenance.length - 1]">
 									{{ vm.maintenance[vm.maintenance.length - 1].name }}
@@ -91,7 +91,7 @@
 						</tr>
 						<tr>
 							<td class="fontWeight-7 padding-xs">Type</td>
-							<td class="padding-xs">{{ vm.gear_data.gearType }}</td>
+							<td class="padding-xs">{{ vm.gear_data.gearType+vm.gear_data.motorType }}</td>
 						</tr>
 						<tr>
 							<td class="fontWeight-7 padding-xs">Power [KW]</td>

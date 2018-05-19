@@ -72,7 +72,7 @@
 											class="c-grey fontSize-xxs"></i>
 										</div>
 									</th>
-									<th ng-click="vm.setGearOrderBy('data.type')" class="cursor-pointer padding-s">
+									<th ng-click="vm.setGearOrderBy('data.type')" class="cursor-pointer padding-s" style="width:150px">
 										<div>
 											Type
 											<i
@@ -150,8 +150,8 @@
 										<td class="padding-s" style="width: 150px;">
 											<span class="txt-overflow" >{{ gearmotor.data.machineno }}</span>
 										</td>
-										<td class="padding-s">
-											<span class="txt-overflow" >{{  gearmotor.data.gearType.gearType}}</span>
+										<td class="padding-s" style="width:150px">
+											<span >{{  gearmotor.data.gearType.gearType+gearmotor.data.gearType.motorType}}</span>
 										</td>
 										<td class="padding-s">
 											<span class="txt-overflow" >{{ gearmotor.data.power }}</span>
