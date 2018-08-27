@@ -22,7 +22,8 @@
 		vm.setGearOrderBy = setGearOrderBy;
 
         Auth.$onAuthStateChanged(function(authData) {
-            vm.authData = authData;
+			vm.authData = authData;
+
             if(vm.authData) {
                 vm.user = Users.get(vm.authData);
             } else {

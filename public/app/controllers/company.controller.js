@@ -10,7 +10,7 @@
 	function companyCtrl($scope, $state, $stateParams, $firebaseArray, $firebaseObject, Users, Auth, cfpLoadingBar) {
         cfpLoadingBar.start();
 		var vm = this;
-
+		
 		vm.logout = logout;
 		vm.addCompany = addCompany;
 		vm.addGroup = addGroup;
@@ -27,7 +27,7 @@
 		vm.showAddCompany = false;
 		vm.showAddGroup = false;
 		vm.showQrDoc = false;
-
+		
 		if($stateParams.id) {
 			getCurrentCompany($stateParams.id);
 		} else {
@@ -42,6 +42,7 @@
 
 		Auth.$onAuthStateChanged(function(authData) {
 			vm.authData = authData;
+			
 			if(vm.authData) {
 				vm.user = Users.get(vm.authData);
 				vm.user.$loaded()

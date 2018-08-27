@@ -186,8 +186,9 @@
 				defer.reject("ERROR UID");
 				return defer.promise;
 			}
-
+			
 			var ref = usersRef.child(authData.uid);
+			
 			var user = $firebaseObject(ref);
 
 			return user;

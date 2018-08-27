@@ -12108,23 +12108,63 @@ table.sticky {
   overflow-y: scroll;
   display: block;
 }
+
 table.sticky thead {
   position: sticky;
   top: 0;
   background-color: #fff;
   display: block;
 }
+
 table.sticky thead tr,
 table.sticky tbody {
   display: table;
-  width: 100%;
+  /* width: 100%; */
   table-layout: fixed;
 }
-table.sticky th:nth-child(3),
+
+table tbody td {
+  padding-bottom: 10px;
+}
+
+table th.padding-s:not(:first-child),
+table td.padding-s:not(:first-child) {
+  padding-left: 0 !important;
+}
+
+.page__machine table tbody tr {
+  border-bottom: 1px solid #eef2f5;
+}
+
+/* .page__machine table th,
+.page__machine table td {
+  min-width: 75px !important;
+} */
+
+/* .page__machine table td {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+} */
+
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+/* table.sticky th:nth-child(3),
 table.sticky td:nth-child(3),
 table.sticky th:nth-child(4),
 table.sticky td:nth-child(4),
 table.sticky th:nth-child(5),
 table.sticky td:nth-child(5) {
   width: 90px;
-}
+} */

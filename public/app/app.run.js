@@ -18,6 +18,8 @@
 			storageBucket: "omagma-abe44.appspot.com",
 			messagingSenderId: "151045131643"
 		};
+		console.log('init');
+		
 		firebase.initializeApp(config);
 	}
 })();

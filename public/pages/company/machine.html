@@ -1,4 +1,4 @@
-<div class="animated fadeIn " style="padding-top: 50px; padding-left: 150px;">
+<div class="animated fadeIn page__machine" style="padding-top: 50px; padding-left: 150px;">
 	<div class="padding-xm">
 		<div class="row marginBottom-xm">
 			<div class="col-xs-12">
@@ -17,7 +17,7 @@
 
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="bg-white borderRadius-xs padding-xm">
+				<div class="bg-white borderRadius-xs">
 					<div class="row marginBottom-s">
 						<div class="col-xs-4">
 							<div class="fontFamily-primary-bold fontSize-m display-inline-block textTransform-capitilze">
@@ -41,18 +41,20 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-12" id="print" >
-							<table class="width-100 sticky" style="display: none"><thead><th class="padding-xs"><a class="cursor-pointer fontSize-s fontStyle-bold "><p style="color: #002faa;display: inline;font-weight: bold">Company:</p> {{vm.selectedCompany.name}} </a></th><th><a class="fontSize-s fontStyle-bold cursor-pointer"><p style="color: #002faa;display: inline;font-weight: bold">Line:</p> {{vm.group.name}}</a></th></th></thead><tbody><td></td></tbody></table>
-							<table class="width-100 sticky">
+						<div id="print" class="table-responsive" >
+							<!-- <table class="width-100 sticky" style="display: none"><thead><th class="padding-xs"><a class="cursor-pointer fontSize-s fontStyle-bold "><p style="color: #002faa;display: inline;font-weight: bold">Company:</p> {{vm.selectedCompany.name}} </a></th><th><a class="fontSize-s fontStyle-bold cursor-pointer"><p style="color: #002faa;display: inline;font-weight: bold">Line:</p> {{vm.group.name}}</a></th></th></thead><tbody><td></td></tbody></table> -->
+							<table class="table width-100 sticky">
 								<thead class="fontWeight-7 textAlign-left">
-								<th ng-click="vm.setGearOrderBy('data.groupno')" class="cursor-pointer padding-s" >
+								<th ng-click="vm.setGearOrderBy('data.groupno')"
+									class="cursor-pointer padding-s" style="width: 75px;">
 									<div>
 										Status
 										<i
 												class="c-grey fontSize-xxs"></i>
 									</div>
 								</th>
-								<th ng-click="vm.setGearOrderBy('data.groupno')" class="cursor-pointer padding-s">
+								<th ng-click="vm.setGearOrderBy('data.groupno')"
+									class="cursor-pointer padding-s">
 									<div>
 										Group
 										<i
@@ -62,9 +64,9 @@
 												class="c-grey fontSize-xxs"></i>
 									</div>
 								</th>
-									<th ng-click="vm.setGearOrderBy('data.machineno')"class="cursor-pointer padding-s" style="width: 150px;">
+									<th ng-click="vm.setGearOrderBy('data.machineno')" class="cursor-pointer padding-s">
 										<div>
-											Machine No.
+											ID No.
 											<i
 											ng-show="vm.gearOrderBy.indexOf('data.machineno') >= 0"
 											ng-class="{'ion-arrow-down-b': vm.gearOrderBy === 'data.machineno',
@@ -72,7 +74,8 @@
 											class="c-grey fontSize-xxs"></i>
 										</div>
 									</th>
-									<th ng-click="vm.setGearOrderBy('data.type')" class="cursor-pointer padding-s" style="width:150px">
+									<th ng-click="vm.setGearOrderBy('data.type')"
+										class="cursor-pointer padding-s">
 										<div>
 											Type
 											<i
@@ -82,7 +85,9 @@
 											class="c-grey fontSize-xxs"></i>
 										</div>
 									</th>
-									<th ng-click="vm.setGearOrderBy('data.power')" class="cursor-pointer padding-s">
+									<th ng-click="vm.setGearOrderBy('data.power')"
+										class="cursor-pointer padding-s"
+										style="width: 55px;">
 										<div>
 											Power
 											<i
@@ -92,7 +97,9 @@
 											class="c-grey fontSize-xxs"></i>
 										</div>
 									</th>
-									<th ng-click="vm.setGearOrderBy('data.ratio')" class="cursor-pointer padding-s">
+									<th ng-click="vm.setGearOrderBy('data.ratio')"
+										class="cursor-pointer padding-s"
+										style="width: 65px;">
 										<div>
 											Ratio
 											<i
@@ -102,7 +109,9 @@
 											class="c-grey fontSize-xxs"></i>
 										</div>
 									</th>
-									<th ng-click="vm.setGearOrderBy('data.speed')" class="cursor-pointer padding-s">
+									<th ng-click="vm.setGearOrderBy('data.speed')"
+										class="cursor-pointer padding-s"
+										style="width: 65px;">
 										<div>
 											Speed
 											<i
@@ -140,27 +149,27 @@
 									</td>
 								</tr>
 									<tr ng-if="gearmotor" ng-repeat="gearmotor in vm.gearmotors | orderBy:vm.gearOrderBy || 'data.machineno' | filter:vm.gearSearch" class="bg-foreground--hover">
-										<td class="padding-s">
+										<td class="padding-s" style="width: 75px;">
 											<span ng-if="gearmotor.data.activate === 'False'" class="txt-overflow" style="font-weight: bold;color: #f60000" >ผิดพลาด</span>
 											<span ng-if="gearmotor.data.activate === 'True'" class="txt-overflow" style="font-weight: bold;color: #40a200" >ปกติ</span>
 										</td>
 										<td class="padding-s">
-											<span class="txt-overflow" >{{ gearmotor.data.groupno }}</span>
+											<span>{{ gearmotor.data.groupno }}</span>
 										</td>
-										<td class="padding-s" style="width: 150px;">
+										<td class="padding-s">
 											<span class="txt-overflow" >{{ gearmotor.data.machineno }}</span>
 										</td>
-										<td class="padding-s" style="width:150px">
+										<td class="padding-s">
 											<span >{{  gearmotor.data.gearType.gearType+gearmotor.data.gearType.motorDesignation}}</span>
 										</td>
-										<td class="padding-s">
+										<td class="padding-s" style="width: 55px;">
 											<span class="txt-overflow" >{{ gearmotor.data.power }}</span>
 										</td>
-										<td class="padding-s">
+										<td class="padding-s" style="width: 65px;">
 											<span class="txt-overflow" >{{ gearmotor.data.ratio }}</span>
 										</td>
-										<td class="padding-s">
-											<span class="txt-overflow" >{{ gearmotor.data.speed }}</span>
+										<td class="padding-s" style="width: 65px;" title="{{ gearmotor.data.speed }}">
+											{{ gearmotor.data.speed }}
 										</td>
 										<td class="textAlign-center padding-s">
 											<a ui-sref="dashboard.machineDescription({id: vm.company_id, group: vm.group_id, machineId: gearmotor.id})" class="link link-primary">
