@@ -12105,30 +12105,40 @@ a,
 
 table.sticky {
   height: 80vh;
+  width: 100%;
   overflow-y: scroll;
   display: block;
 }
 
-table.sticky thead {
+table.sticky thead tr:nth-child(1) th {
+  background: white;
   position: sticky;
   top: 0;
-  background-color: #fff;
-  display: block;
+  z-index: 10;
+  /* position: sticky;
+  top: 0;
+  background-color: #fff; */
+  /* display: block; */
 }
 
-table.sticky thead tr,
+/* table.sticky thead tr,
 table.sticky tbody {
   display: table;
-  /* width: 100%; */
+  width: auto;
   table-layout: fixed;
-}
+} */
 
 table tbody td {
   padding-bottom: 10px;
 }
 
-table th.padding-s:not(:first-child),
-table td.padding-s:not(:first-child) {
+.page__machine table th:first-child,
+.page__machine table td:first-child {
+  padding-left: 2rem !important;
+}
+
+.page__machine table th:not(:first-child),
+.page__machine table td:not(:first-child) {
   padding-left: 0 !important;
 }
 
@@ -12149,6 +12159,7 @@ table td.padding-s:not(:first-child) {
 
 .table-responsive {
   display: block;
+  position: relative;
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -12160,11 +12171,64 @@ table td.padding-s:not(:first-child) {
   margin-bottom: 1rem;
   background-color: transparent;
 }
-/* table.sticky th:nth-child(3),
-table.sticky td:nth-child(3),
-table.sticky th:nth-child(4),
-table.sticky td:nth-child(4),
-table.sticky th:nth-child(5),
-table.sticky td:nth-child(5) {
-  width: 90px;
+
+table.sticky th,
+table.sticky td {
+  position: relative;
+}
+
+/* .page__machine table.sticky th:nth-child(1),
+.page__machine table.sticky td:nth-child(1),
+.page__machine table.sticky th:nth-child(2),
+.page__machine table.sticky td:nth-child(2),
+.page__machine table.sticky th:nth-child(3),
+.page__machine table.sticky td:nth-child(3),
+.page__machine table.sticky th:nth-child(4),
+.page__machine table.sticky td:nth-child(4) {
+  text-align: center;
+} */
+
+.page__machine table.sticky th:nth-child(5),
+.page__machine table.sticky th:nth-child(6),
+.page__machine table.sticky th:nth-child(7),
+.page__machine table.sticky td:nth-child(5),
+.page__machine table.sticky td:nth-child(6),
+.page__machine table.sticky td:nth-child(7) {
+  text-align: right;
+}
+
+/* table.sticky th:nth-child(1),
+table.sticky td:nth-child(1),
+table.sticky th:nth-child(2),
+table.sticky td:nth-child(2),
+table.sticky th:nth-child(3),
+table.sticky td:nth-child(3) {
+  position: absolute !important;
+  z-index: 11 !important;
+  background: white;
+}
+
+table.sticky th:nth-child(1),
+table.sticky td:nth-child(1) {
+  left: 0;
+}
+
+table.sticky th:nth-child(2),
+table.sticky td:nth-child(2) {
+  left: 10%;
+}
+
+table.sticky th:nth-child(3),
+table.sticky td:nth-child(3) {
+  left: 20%;
+}
+
+table.sticky td:nth-child(3)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  box-shadow: 3px 0px 8px 0 rgba(221, 221, 221, 0.5);
 } */
