@@ -22,7 +22,7 @@
 		vm.addMachine = addMachine;
 
 		getCurrentSelected();
-
+		console.log(vm);
 		if (vm.machine_id)
 		{
             var ref = firebase.database().ref('/GearmotorMachine').child($stateParams.machineId);
@@ -30,7 +30,6 @@
             obj.$loaded().then(function (data) {
 
                 vm.machine = data;
-                console.log(vm.machine);
 			})
 
 		}

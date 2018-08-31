@@ -79,7 +79,7 @@
 					checkup_url: (checkup) ? checkup.url : '',
 				};
 			});
-
+			
 			for(let loop = 0;loop<=vm.gearmotors.length-1;loop++)
 			{
                 var a = getGearttype(vm.gearmotors[loop].data.gearmotor);

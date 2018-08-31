@@ -7,6 +7,33 @@
 
 	gearCtrl.$inject = ['$q','$scope','$state', 'Users', 'Auth', '$stateParams' ,'$firebaseArray','$firebaseObject','cfpLoadingBar','cfpLoadingBar'];
 
+    /**
+     * Object for mapping between options field and record field
+     */
+    var option_Mapping = {
+        'GearunitOption'                    :   'gearUnitDesign',
+        'gearUnitSizeOption'                :   'gearUnitSize',
+        'gearRatioOption'                   :   'gearRatio',
+        'gearTorqueOption'                  :   'gearTorque',
+        'gearBuildinTypeOption'             :   'gearBuildinType',
+        'gearHollowOrOutputShaftOption'     :   'gearHollowOrOutputShaft',
+        'gearOutputFlangeOption'            :   'gearOutputFlange',
+        'gearDriveFlangeOption'             :   'gearDriveFlange',
+        'gearOptionOption'                  :   'gearOption',
+        'efficOption'                       :   'effic',
+        'motorDesignOption'                 :   'motorDesign',
+        'motorFrameSizeOption'              :   'motorFrameSize',
+        'motorPoleOption'                   :   'motorPole',
+        'motorPowerOption'                  :   'motorPower',
+        'motorVoltageDOption'               :   'motorVoltageD',
+        'motorVoltageYOption'               :   'motorVoltageY',
+        'motorCurrentOption'                :   'motorCurrent',
+        'motorSpeedOption'                  :   'motorSpeed',
+        'motorBuildinTypeOption'            :   'motorBuildinType',
+        'motorShaftOption'                  :   'motorShaft',
+        'motorOptionOption'                 :   'motorOption'
+    };
+
 	function gearCtrl($q,$scope,$state, Users, Auth, $stateParams,$firebaseArray, $firebaseObject , cfpLoadingBar) {
         cfpLoadingBar.start();
 		var vm = this;
@@ -27,30 +54,19 @@
 		vm.selectstring = selectstring;
         vm.savegearmotor = savegearmotor;
 
-        vm.loadData = {data:[]}
-        vm.GearunitOption = {data:[]};
-        vm.gearUnitSizeOption = {data:[]};
-        vm.gearRatioOption = {data:[]};
-        vm.gearTorqueOption = {data:[]};
-        vm.gearBuildinTypeOption = {data:[]};
-        vm.gearHollowOrOutputShaftOption = {data:[]};
-        vm.gearOutputFlangeOption = {data:[]};
-        vm.gearDriveFlangeOption = {data:[]};
-        vm.gearOptionOption = {data:[]};
-        vm.motorDesignOption = {data:[]};
-        vm.motorFrameSizeOption = {data:[]};
-        vm.motorPoleOption = {data:[]};
-        vm.motorPowerOption = {data:[]};
-        vm.motorVoltageDOption = {data:[]};
-        vm.motorVoltageYOption = {data:[]};
-        vm.motorCurrentOption = {data:[]};
-        vm.motorSpeedOption = {data:[]};
-        vm.motorBuildinTypeOption = {data:[]};
-        vm.motorShaftOption = {data:[]};
-        vm.motorOptionOption = {data:[]};
-        vm.efficOption = {data:[]};
+        vm.loadData = { data:[] };
+
+        initOptionData();
+
+        function initOptionData() {
+            for (var option in option_Mapping) {
+                vm[option] = { data: [] };
+            }
+        }
 
         function savegearmotor(gear) {
+            console.log(gear);
+            
             gear.$save().then(function (data) {});
 
             var ref = firebase.database().ref('/GearmotorMachine');
@@ -80,93 +96,57 @@
 
         }
 
-		function filterStringList(userInput,dropdown,key) {
-
+		function filterStringList(userInput, key) {
+            selectstring(userInput,key);
             updateGearDesignation();
             updateGearBuildinType();
             updateMotorDesignation();
             updateMotorType();
-            selectstring(userInput,key);
+
             var filter = $q.defer();
             var normalisedInput = userInput.toLowerCase();
 
-            var filteredArray = dropdown.filter(function(country) {
+            var filteredArray = vm[key].data.filter(function(country) {
                 return country.toLowerCase().indexOf(normalisedInput) === 0;
             });
 
             filter.resolve(filteredArray);
+
             return filter.promise;
         };
 
-        function removeDuplicates(arr){
-            let unique_array = []
-            for(let i = 0;i < arr.length; i++){
-                if(unique_array.indexOf(arr[i]) == -1){
-                    unique_array.push(arr[i])
+        function mergeOption(object) {
+            for (var option in option_Mapping) {
+                var field = option_Mapping[option];
+
+                if (
+                    object[field] &&
+                    vm[option].data.indexOf(object[field]) === -1
+                ) {
+                    vm[option].data.push(object[field]);
                 }
             }
-            return unique_array
+        }
+
+        function sortOption()
+        {
+            for (var option in option_Mapping) {
+                vm[option].data.sort();
+            }
         }
 
         function Loadoption() {
 
             var ref = firebase.database().ref('/gearmotor');
-            var obj = $firebaseArray(ref)
+            var obj = $firebaseArray(ref);
+            
             obj.$loaded().then(function (data) {
             	vm.loadData.data = data;
 
-                for(var i=0;i<=data.length-1;i++){
+                vm.loadData.data.forEach(mergeOption);
 
-                    vm.GearunitOption.data.push(vm.loadData.data[i].gearUnitDesign);
-                    vm.gearUnitSizeOption.data.push(vm.loadData.data[i].gearUnitSize);
-                    vm.gearRatioOption.data.push(vm.loadData.data[i].gearRatio);
-                    vm.gearTorqueOption.data.push(vm.loadData.data[i].gearTorque);
-                    vm.gearBuildinTypeOption.data.push(vm.loadData.data[i].gearBuildinType);
-                    vm.gearHollowOrOutputShaftOption.data.push(vm.loadData.data[i].gearHollowOrOutputShaft);
-                    vm.gearOutputFlangeOption.data.push(vm.loadData.data[i].gearOutputFlange);
-                    vm.gearDriveFlangeOption.data.push(vm.loadData.data[i].gearDriveFlange);
-                    vm.gearOptionOption.data.push(vm.loadData.data[i].gearOption);
-                    vm.efficOption.data.push(vm.loadData.data[i].effic);
-
-                    vm.motorDesignOption.data.push(vm.loadData.data[i].motorDesign);
-                    vm.motorFrameSizeOption.data.push(vm.loadData.data[i].motorFrameSize);
-                    vm.motorPoleOption.data.push(vm.loadData.data[i].motorPole);
-                    vm.motorPowerOption.data.push(vm.loadData.data[i].motorPower);
-                    vm.motorVoltageDOption.data.push(vm.loadData.data[i].motorVoltageD);
-                    vm.motorVoltageYOption.data.push(vm.loadData.data[i].motorVoltageY);
-                    vm.motorCurrentOption.data.push(vm.loadData.data[i].motorCurrent);
-                    vm.motorSpeedOption.data.push(vm.loadData.data[i].motorSpeed);
-                    vm.motorBuildinTypeOption.data.push(vm.loadData.data[i].motorBuildinType);
-                    vm.motorShaftOption.data.push(vm.loadData.data[i].motorShaft);
-                    vm.motorOptionOption.data.push(vm.loadData.data[i].motorOption);
-
-                }
-                vm.GearunitOption.data = removeDuplicates(vm.GearunitOption.data);
-                vm.gearUnitSizeOption.data = removeDuplicates(vm.gearUnitSizeOption.data);
-                vm.gearRatioOption.data = removeDuplicates(vm.gearRatioOption.data);
-                vm.gearTorqueOption.data = removeDuplicates(vm.gearTorqueOption.data);
-                vm.gearBuildinTypeOption.data = removeDuplicates(vm.gearBuildinTypeOption.data);
-                vm.gearHollowOrOutputShaftOption.data = removeDuplicates(vm.gearHollowOrOutputShaftOption.data);
-                vm.gearOutputFlangeOption.data = removeDuplicates(vm.gearOutputFlangeOption.data);
-                vm.gearDriveFlangeOption.data = removeDuplicates(vm.gearDriveFlangeOption.data);
-                vm.gearOptionOption.data = removeDuplicates(vm.gearOptionOption.data);
-                vm.efficOption.data = removeDuplicates(vm.efficOption.data);
-
-                vm.motorDesignOption.data = removeDuplicates(vm.motorDesignOption.data);
-                vm.motorFrameSizeOption.data = removeDuplicates(vm.motorFrameSizeOption.data);
-                vm.motorPoleOption.data = removeDuplicates(vm.motorPoleOption.data);
-                vm.motorPowerOption.data = removeDuplicates(vm.motorPowerOption.data);
-                vm.motorVoltageDOption.data = removeDuplicates(vm.motorVoltageDOption.data);
-                vm.motorVoltageYOption.data = removeDuplicates(vm.motorVoltageYOption.data);
-                vm.motorCurrentOption.data = removeDuplicates(vm.motorCurrentOption.data);
-                vm.motorSpeedOption.data = removeDuplicates(vm.motorSpeedOption.data);
-                vm.motorBuildinTypeOption.data = removeDuplicates(vm.motorBuildinTypeOption.data);
-                vm.motorShaftOption.data = removeDuplicates(vm.motorShaftOption.data);
-                vm.motorOptionOption.data = removeDuplicates(vm.motorOptionOption.data);
-
-            })
-
-
+                sortOption();
+            });
         }
 		////// Start! Set form value from database ///////////
 
@@ -175,37 +155,42 @@
 
         ////// End! Set form value from database ///////////
 
-        function selectstring(data,key) {
+        function selectstring(value, key) {
+            console.log(value, key);
+            
+            if(option_Mapping.hasOwnProperty(key)) {
+                vm.gear[option_Mapping[key]] = value;
+            }
+            
+			// switch (key)
+			// {	case 'GearunitOption' : vm.gear.gearUnitDesign = data;break;
+            //     case 'gearUnitSize' : vm.gear.gearUnitSize = data;break;
+            //     case 'gearRatio' : vm.gear.gearRatio = data;break;
+            //     case 'gearTorque' : vm.gear.gearTorque = data;break;
+            //     case 'gearBuildinType' : vm.gear.gearBuildinType = data;break;
+            //     case 'gearHollowOrOutputShaft' : vm.gear.gearHollowOrOutputShaft = data;break;
+            //     case 'gearOutputFlange' : vm.gear.gearOutputFlange = data;break;
+            //     case 'gearDriveFlange' : vm.gear.gearDriveFlange = data;break;
+            //     case 'gearOption' : vm.gear.gearOption = data;break;
 
-			switch (key)
-			{	case 'GearunitOption' : vm.gear.gearUnitDesign = data;break;
-                case 'gearUnitSize' : vm.gear.gearUnitSize = data;break;
-                case 'gearRatio' : vm.gear.gearRatio = data;break;
-                case 'gearTorque' : vm.gear.gearTorque = data;break;
-                case 'gearBuildinType' : vm.gear.gearBuildinType = data;break;
-                case 'gearHollowOrOutputShaft' : vm.gear.gearHollowOrOutputShaft = data;break;
-                case 'gearOutputFlange' : vm.gear.gearOutputFlange = data;break;
-                case 'gearDriveFlange' : vm.gear.gearDriveFlange = data;break;
-                case 'gearOption' : vm.gear.gearOption = data;break;
+            //     case 'motorDesign' : vm.gear.motorDesign = data;break;
+            //     case 'motorFrameSize' : vm.gear.motorFrameSize = data;break;
+            //     case 'motorPole' : vm.gear.motorPole = data;break;
+            //     case 'motorPower' : vm.gear.motorPower = data;break;
+            //     case 'motorVoltageD' : vm.gear.motorVoltageD = data;break;
+            //     case 'motorVoltageY' : vm.gear.motorVoltageY = data;break;
+            //     case 'motorCurrent' : vm.gear.motorCurrent = data;break;
+            //     case 'motorSpeed' : vm.gear.motorSpeed = data;break;
+            //     case 'motorBuildinType' : vm.gear.motorBuildinType = data;break;
+            //     case 'motorShaft' : vm.gear.motorShaft = data;break;
+            //     case 'motorOption' : vm.gear.motorOption = data;break;
+            //     case 'effic' : vm.gear.effic = data;break;
+            // }
 
-                case 'motorDesign' : vm.gear.motorDesign = data;break;
-                case 'motorFrameSize' : vm.gear.motorFrameSize = data;break;
-                case 'motorPole' : vm.gear.motorPole = data;break;
-                case 'motorPower' : vm.gear.motorPower = data;break;
-                case 'motorVoltageD' : vm.gear.motorVoltageD = data;break;
-                case 'motorVoltageY' : vm.gear.motorVoltageY = data;break;
-                case 'motorCurrent' : vm.gear.motorCurrent = data;break;
-                case 'motorSpeed' : vm.gear.motorSpeed = data;break;
-                case 'motorBuildinType' : vm.gear.motorBuildinType = data;break;
-                case 'motorShaft' : vm.gear.motorShaft = data;break;
-                case 'motorOption' : vm.gear.motorOption = data;break;
-                case 'effic' : vm.gear.effic = data;break;
-			}
             updateGearDesignation();
             updateGearBuildinType();
             updateMotorDesignation();
-			updateMotorType();
-
+            updateMotorType();
         }
 
 		Auth.$onAuthStateChanged(function(authData) {
@@ -284,7 +269,6 @@
 		}
 
 		function addGear() {
-			console.log('eiei');
 			var ref = firebase.database().ref('/gearmotor');
 			var obj = $firebaseArray(ref);
 			obj.$add(vm.gear)
@@ -295,22 +279,22 @@
 					$state.go('dashboard.machineAdd',{id: vm.company_id, group: vm.group_id,selected:data.toString().slice(46,66)});
 
 				});
-		}
+        }
 		
 		function updateGearDesignation() {
-			vm.gear.gearDesignation = (vm.gear.gearUnitDesign && vm.gear.gearUnitSize) ? vm.gear.gearUnitDesign + vm.gear.gearUnitSize : '';
+            vm.gear.gearDesignation = (vm.gear.gearUnitDesign && vm.gear.gearUnitSize) ? vm.gear.gearUnitDesign + vm.gear.gearUnitSize : '';
 		}
 
 		function updateGearBuildinType() {
-			vm.gear.gearType = (vm.gear.gearBuildinType && vm.gear.gearUnitSize) ? vm.gear.gearBuildinType + vm.gear.gearUnitSize : '';
+            vm.gear.gearType = (vm.gear.gearBuildinType && vm.gear.gearUnitSize) ? vm.gear.gearBuildinType + vm.gear.gearUnitSize : '';
 		}
 
 		function updateMotorDesignation() {
-			vm.gear.motorDesignation = (vm.gear.motorDesign && vm.gear.motorFrameSize && vm.gear.motorPole) ? vm.gear.motorDesign + vm.gear.motorFrameSize + vm.gear.motorPole : '';
+            vm.gear.motorDesignation = (vm.gear.motorDesign && vm.gear.motorFrameSize && vm.gear.motorPole) ? vm.gear.motorDesign + vm.gear.motorFrameSize + vm.gear.motorPole : '';
 		}
 		
 		function updateMotorType() {
-			vm.gear.motorType = (vm.gear.motorDesignation && vm.gear.motorBuildinType) ? vm.gear.motorDesignation + '/' + vm.gear.motorBuildinType: '';
+			vm.gear.motorType = (vm.gear.motorDesignation && vm.gear.motorBuildinType) ? vm.gear.motorDesignation + '/' + vm.gear.motorBuildinType : '';
 		}
 
 	}

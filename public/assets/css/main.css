@@ -12139,12 +12139,12 @@ table tbody td {
 
 .page__machine table th:not(:first-child),
 .page__machine table td:not(:first-child) {
-  padding-left: 0 !important;
+  padding-left: 1rem !important;
 }
 
-.page__machine table tbody tr {
+/* .page__machine table tbody tr {
   border-bottom: 1px solid #eef2f5;
-}
+} */
 
 /* .page__machine table th,
 .page__machine table td {
@@ -12195,6 +12195,17 @@ table.sticky td {
 .page__machine table.sticky td:nth-child(6),
 .page__machine table.sticky td:nth-child(7) {
   text-align: right;
+}
+
+.input-dropdown ul {
+  border: 1px solid #eef2f5 !important;
+  box-shadow: 3px 6px 14px 0 rgba(42, 101, 255, 0.1);
+  transition: all .3s ease;
+}
+
+.input-dropdown ul > li.active {
+  background: #2a65ff !important;
+  color: white !important;
 }
 
 /* table.sticky th:nth-child(1),

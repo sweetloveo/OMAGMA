@@ -17,7 +17,7 @@ angular.module('inputDropdown', []).directive('inputDropdown', [function() {
           'ng-click="selectItem(item)"' +
           'ng-mouseenter="setActive($index)"' +
           'ng-mousedown="dropdownPressed()"' +
-          'ng-class="{\'active\': activeItemIndex === $index}"' +
+          'ng-class="{\'active\': isActive($index)}"' +
           '>' +
         '<span ng-if="item.readableName">{{item.readableName}}</span>' +
         '<span ng-if="!item.readableName">{{item}}</span>' +
@@ -63,10 +63,11 @@ angular.module('inputDropdown', []).directive('inputDropdown', [function() {
       scope.dropdownItems = scope.defaultDropdownItems || [];
 
       scope.$watch('dropdownItems', function(newValue, oldValue) {
+        
         if (!angular.equals(newValue, oldValue)) {
           // If new dropdownItems were retrieved, reset active item
           if (scope.allowCustomInput) {
-            scope.setInputActive();
+            scope.setInputActive(oldValue.indexOf(scope.selectedItem));
           }
           else {
             scope.setActive(0);
@@ -76,7 +77,7 @@ angular.module('inputDropdown', []).directive('inputDropdown', [function() {
 
       scope.$watch('selectedItem', function(newValue, oldValue) {
         inputScope.updateInputValidity();
-        console.log('Change ! = '+newValue);
+        
         if (!angular.equals(newValue, oldValue)) {
             if(newValue === undefined){
                 scope.inputValue = '';
@@ -102,7 +103,6 @@ angular.module('inputDropdown', []).directive('inputDropdown', [function() {
       });
 
       scope.setInputActive = function() {
-        scope.setActive(-1);
 
         //TODO: Add active/selected class to input field for styling
       };
@@ -110,6 +110,10 @@ angular.module('inputDropdown', []).directive('inputDropdown', [function() {
       scope.setActive = function(itemIndex) {
         scope.activeItemIndex = itemIndex;
       };
+
+      scope.isActive = function(itemIndex) {
+        return scope.activeItemIndex === itemIndex;
+      }
 
       scope.inputChange = function() {
         scope.selectedItem = null;
@@ -128,6 +132,8 @@ angular.module('inputDropdown', []).directive('inputDropdown', [function() {
           if (promise) {
             promise.then(function(dropdownItems) {
               scope.dropdownItems = dropdownItems;
+              console.log(scope.dropdownItems);
+              
             });
           }
         }
@@ -141,8 +147,8 @@ angular.module('inputDropdown', []).directive('inputDropdown', [function() {
         else {
           scope.setActive(0);
         }
+
         showDropdown();
-        console.log(scope.inputValue);
       };
 
       scope.inputBlur = function(event) {
@@ -159,13 +165,17 @@ angular.module('inputDropdown', []).directive('inputDropdown', [function() {
       };
 
       scope.selectItem = function(item) {
+        
         scope.selectedItem = item;
+
         hideDropdown();
+
         scope.dropdownItems = [item];
 
         if (scope.itemSelectedMethod) {
           scope.itemSelectedMethod({item: item});
         }
+        
       };
 
       var showDropdown = function () {

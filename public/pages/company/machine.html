@@ -47,13 +47,13 @@
 							<!-- <table class="width-100 sticky" style="display: none"><thead><th class="padding-xs"><a class="cursor-pointer fontSize-s fontStyle-bold "><p style="color: #002faa;display: inline;font-weight: bold">Company:</p> {{vm.selectedCompany.name}} </a></th><th><a class="fontSize-s fontStyle-bold cursor-pointer"><p style="color: #002faa;display: inline;font-weight: bold">Line:</p> {{vm.group.name}}</a></th></th></thead><tbody><td></td></tbody></table> -->
 							<table class="table sticky">
 								<thead class="fontWeight-7 textAlign-left">
-									<th ng-click="vm.setGearOrderBy('data.groupno')" class="cursor-pointer padding-s" style="width: 10%;">
+									<th ng-click="vm.setGearOrderBy('data.activate')" class="cursor-pointer padding-s" style="width: 5%;">
 										<div>
 											Status
 											<i class="c-grey fontSize-xxs"></i>
 										</div>
 									</th>
-									<th ng-click="vm.setGearOrderBy('data.groupno')" class="cursor-pointer padding-s" style="width: 10%;">
+									<th ng-click="vm.setGearOrderBy('data.groupno')" class="cursor-pointer padding-s" style="width: 20%;">
 										<div>
 											Group
 											<i ng-show="vm.gearOrderBy.indexOf('data.groupno') >= 0" ng-class="{'ion-arrow-down-b': vm.gearOrderBy === 'data.groupno',
@@ -126,23 +126,23 @@
 									<tr ng-if="gearmotor" ng-repeat="gearmotor in vm.gearmotors | orderBy:vm.gearOrderBy || 'data.machineno' | filter:vm.gearSearch"
 									    class="bg-foreground--hover">
 										<td class="padding-s">
-											<span ng-if="gearmotor.data.activate === 'False'" class="txt-overflow" style="font-weight: bold;color: #f60000">ผิดพลาด</span>
-											<span ng-if="gearmotor.data.activate === 'True'" class="txt-overflow" style="font-weight: bold;color: #40a200">ปกติ</span>
+											<span ng-if="gearmotor.data.activate === 'False'" style="font-weight: bold;color: #f60000">ผิดพลาด</span>
+											<span ng-if="gearmotor.data.activate === 'True'" style="font-weight: bold;color: #40a200">ปกติ</span>
 										</td>
 										<td class="padding-s">
 											<span>{{ gearmotor.data.groupno }}</span>
 										</td>
 										<td class="padding-s">
-											<span class="txt-overflow">{{ gearmotor.data.machineno }}</span>
+											<span>{{ gearmotor.data.machineno }}</span>
 										</td>
 										<td class="padding-s">
 											<span>{{ gearmotor.data.gearType.gearType+gearmotor.data.gearType.motorDesignation}}</span>
 										</td>
 										<td class="padding-s">
-											<span class="txt-overflow">{{ gearmotor.data.power }}</span>
+											<span>{{ gearmotor.data.power }}</span>
 										</td>
 										<td class="padding-s">
-											<span class="txt-overflow">{{ gearmotor.data.ratio }}</span>
+											<span>{{ gearmotor.data.ratio }}</span>
 										</td>
 										<td class="padding-s" title="{{ gearmotor.data.speed }}">
 											{{ gearmotor.data.speed }}
