@@ -1,0 +1,121 @@
+{
+  "gearmoterMachine": {
+    "-LAMOw0C8trwdcfFVd67" : {
+      "Overhaul" : "28/07/2018",
+      "activate" : "True",
+      "brakevolttorquerectifier" : "400/2.5/BG",
+      "gearmotor" : "-LAMOOPX5n6jr9PdOXW4",
+      "groupno" : "TRAY FORMER PALLETIZER",
+      "idno" : "303.04979.3B.0001",
+      "layoutno" : "-",
+      "machineno" : "1305M1",
+      "motorflange" : "120",
+      "mtgkk" : "M1A/180",
+      "power" : "0.37",
+      "ratedcurrent" : "1.23",
+      "ratio" : "49.79",
+      "serialno" : "40.1386059306.0001.11",
+      "sf" : "1.55",
+      "shaftflange" : "25X50/-",
+      "speed" : "28",
+      "torque" : "127",
+      "type" : "Gearmotor",
+      "voltagesystem" : "230/400"
+    }
+  },
+  "company": {
+    "-L8DTtyh_ur_QgXfSbgl" : {
+      "name": "PERRIER VITTEL (THAILAND)",
+      "group" : {
+        "-L8DWDhkzvz_6KX4mEOo" : {
+          "name": "LINE D",
+          "machine" : {
+            "-LAMOw6winRg7Lvd1REM" : {
+              "id" : "-LAMOw0C8trwdcfFVd67",
+              "images" : {
+                "-LAQq0SuxcnwfezEILx6" : {
+                  "name" : "1305M1.JPG",
+                  "ref" : "/company/-L8DTtyh_ur_QgXfSbgl/-L8DWDhkzvz_6KX4mEOo/-LAMOw6winRg7Lvd1REM/images/19/04/20181305M1.JPG",
+                  "timestamp" : "19/04/2018",
+                  "url" : "https://firebasestorage.googleapis.com/v0/b/omagma-abe44.appspot.com/o/company%2F-L8DTtyh_ur_QgXfSbgl%2F-L8DWDhkzvz_6KX4mEOo%2F-LAMOw6winRg7Lvd1REM%2Fimages%2F19%2F04%2F20181305M1.JPG?alt=media&token=a94ae393-a267-4150-bd0d-016eee1af814"
+                },
+                "-LAQq0VlDBunWr4I9gMY" : {
+                  "name" : "1305M1_P.JPG",
+                  "ref" : "/company/-L8DTtyh_ur_QgXfSbgl/-L8DWDhkzvz_6KX4mEOo/-LAMOw6winRg7Lvd1REM/images/19/04/20181305M1_P.JPG",
+                  "timestamp" : "19/04/2018",
+                  "url" : "https://firebasestorage.googleapis.com/v0/b/omagma-abe44.appspot.com/o/company%2F-L8DTtyh_ur_QgXfSbgl%2F-L8DWDhkzvz_6KX4mEOo%2F-LAMOw6winRg7Lvd1REM%2Fimages%2F19%2F04%2F20181305M1_P.JPG?alt=media&token=d23ce801-2529-49ad-929f-df0f90dd7fe9"
+                },
+                "-LIVA6ZO-Ok7zAMg_AXw" : {
+                  "name" : "1305M1 TRAY FORMER PALLETIZER.jpg",
+                  "ref" : "/company/-L8DTtyh_ur_QgXfSbgl/-L8DWDhkzvz_6KX4mEOo/-LAMOw6winRg7Lvd1REM/images/28/07/20181305M1 TRAY FORMER PALLETIZER.jpg",
+                  "timestamp" : "28/07/2018",
+                  "url" : "https://firebasestorage.googleapis.com/v0/b/omagma-abe44.appspot.com/o/company%2F-L8DTtyh_ur_QgXfSbgl%2F-L8DWDhkzvz_6KX4mEOo%2F-LAMOw6winRg7Lvd1REM%2Fimages%2F28%2F07%2F20181305M1%20TRAY%20FORMER%20PALLETIZER.jpg?alt=media&token=0bd420cf-9977-40c0-85fa-02a7ba427d72"
+                }
+              },
+              "maintenance" : {
+                "-LAMPVIi-0vazjuHaaqt" : {
+                  "cause" : "OVERHAUL",
+                  "date" : "07/12/2017",
+                  "maintainer" : "OMAGMA",
+                  "name" : "Service Report PER17_26_1305M1.pdf",
+                  "ref" : "/company/-L8DTtyh_ur_QgXfSbgl/-L8DWDhkzvz_6KX4mEOo/-LAMOw6winRg7Lvd1REM/maintenance/18/04/2018Service Report PER17_26_1305M1.pdf",
+                  "timestamp" : "18/04/2018",
+                  "url" : "https://firebasestorage.googleapis.com/v0/b/omagma-abe44.appspot.com/o/company%2F-L8DTtyh_ur_QgXfSbgl%2F-L8DWDhkzvz_6KX4mEOo%2F-LAMOw6winRg7Lvd1REM%2Fmaintenance%2F18%2F04%2F2018Service%20Report%20PER17_26_1305M1.pdf?alt=media&token=ab4eafa9-1d65-4dc2-879d-c1bb8fc6dbbd"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "gearmotor": {
+    "-LAMOOPX5n6jr9PdOXW4" : {
+      "driveType" : "Gearmotor",
+      "effic" : "-",
+      "gearBuildinType" : "K",
+      "gearDesignation" : "K37",
+      "gearDriveFlange" : "120",
+      "gearHollowOrOutputShaft" : "25X50",
+      "gearOption" : "-",
+      "gearOutputFlange" : "-",
+      "gearRatio" : "49.79",
+      "gearTorque" : "-",
+      "gearType" : "K37",
+      "gearUnitDesign" : "K",
+      "gearUnitSize" : "37",
+      "motorBuildinType" : "FG",
+      "motorCurrent" : "1.23",
+      "motorDesign" : "DR",
+      "motorDesignation" : "DR71S4",
+      "motorFrameSize" : "71S",
+      "motorOption" : "BE05",
+      "motorPole" : "4",
+      "motorPower" : "0.37",
+      "motorShaft" : "10",
+      "motorSpeed" : "1380",
+      "motorType" : "DR71S4/FG",
+      "motorVoltageD" : "230",
+      "motorVoltageY" : "400",
+      "opspeed" : "28",
+      "optorque" : "127",
+      "sf" : "1.55"
+    }
+  },
+  "users": {
+    "O77J0LVEPtY3bN2LO7l6sQcV6b42" : {
+      "profile" : {
+        "Available" : "ปกติ",
+        "ExpireAt" : "-",
+        "Time" : "ถาวร",
+        "company" : {
+          "name" : "-"
+        },
+        "createdAt" : "18/04/2018",
+        "email" : "admin@omagma.com",
+        "level" : "admin",
+        "name" : "Nucharee Chaiyarak"
+      }
+    }
+  }
+}
