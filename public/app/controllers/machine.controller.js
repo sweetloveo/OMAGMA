@@ -82,10 +82,15 @@
 			
 			for(let loop = 0;loop<=vm.gearmotors.length-1;loop++)
 			{
-                var a = getGearttype(vm.gearmotors[loop].data.gearmotor);
-                a.then(function (value) {
-                    vm.gearmotors[loop].data.gearType = value;
-				});
+				if (vm.gearmotors[loop].data.gearmotor.length) {
+					var a = getGearttype(vm.gearmotors[loop].data.gearmotor);
+
+					a.then(function (value) {
+						vm.gearmotors[loop].data.gearType = value;
+					});
+				} else {
+					vm.gearmotors[loop].data.gearType = '-';
+				}
 			}
 
 			vm.loading = false;

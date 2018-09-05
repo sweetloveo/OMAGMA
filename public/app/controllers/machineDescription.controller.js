@@ -139,13 +139,19 @@
 				}
                 return k === vm.gear.id;
 			});
-            vm.gear_data.$id = keyy;
-            var a = getGearttype(vm.gear_data.gearmotor);
-            a.then(function (value) {
-                vm.gear_data.gearType = value.gearType;
-                vm.gear_data.motorType = value.motorType;
-				console.log(vm.gear_data)
-            })
+			vm.gear_data.$id = keyy;
+			
+			if (vm.gear_data.gearmotor.length) {
+				var a = getGearttype(vm.gear_data.gearmotor);
+				a.then(function (value) {
+					vm.gear_data.gearType = value.gearType;
+					vm.gear_data.motorType = value.motorType;
+				})
+			} else {
+				vm.gear_data.gearType = '-';
+				vm.gear_data.motorType = '-';
+			}
+            
 
 		}
 
