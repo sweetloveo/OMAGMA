@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "firebase-tools": "^4.2.1",
     "jshint": "^2.9.6"
   }
 }
