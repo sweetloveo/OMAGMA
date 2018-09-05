@@ -53,6 +53,7 @@
 		vm.updateMotorType = updateMotorType;
 		vm.selectstring = selectstring;
         vm.savegearmotor = savegearmotor;
+        vm.gearFullOption = gearFullOption;
 
         vm.loadData = { data:[] };
 
@@ -146,6 +147,11 @@
                 vm.loadData.data.forEach(mergeOption);
 
                 sortOption();
+
+                updateGearDesignation();
+                updateGearBuildinType();
+                updateMotorDesignation();
+                updateMotorType();
             });
         }
 		////// Start! Set form value from database ///////////
@@ -294,8 +300,49 @@
 		}
 		
 		function updateMotorType() {
-			vm.gear.motorType = (vm.gear.motorDesignation && vm.gear.motorBuildinType) ? vm.gear.motorDesignation + '/' + vm.gear.motorBuildinType : '';
-		}
+            // vm.gear.motorType = (vm.gear.motorDesignation && vm.gear.motorBuildinType) ? vm.gear.motorDesignation + '/' + vm.gear.motorBuildinType : '';
+            vm.gear.motorType = (vm.gear.motorDesignation && vm.gear.motorBuildinType == 'FG') ? vm.gear.motorDesignation : vm.gear.motorDesignation + '/' + vm.gear.motorBuildinType;
+        }
+        
+        function gearFullOption() {
+            var gearFullOption = '',
+                gearWithOption = '',
+                motorWithOption = '';
+            
+            if (vm.gear.gearType) {
+                gearWithOption += vm.gear.gearType;
+
+                if (vm.gear.gearOption != '-') {
+                    gearWithOption += '/' + vm.gear.gearOption;
+                }
+            }
+
+            if (vm.gear.motorType) {
+                motorWithOption += vm.gear.motorType;
+
+                if (vm.gear.motorOption != '-') {
+                    motorWithOption += '/' + vm.gear.motorOption;
+                }
+            }
+
+            if (gearWithOption.length) {
+                gearFullOption += gearWithOption;
+            }
+
+            if (motorWithOption.length) {
+                if (gearFullOption.length) {
+                    gearFullOption += ' ';
+                }
+                
+                gearFullOption += motorWithOption;
+            }
+
+            if (!gearFullOption.length) {
+                gearFullOption = '-';
+            }
+
+            return gearFullOption;
+        }
 
 	}
 })();
