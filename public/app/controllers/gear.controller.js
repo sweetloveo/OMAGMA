@@ -147,7 +147,6 @@
                 vm.loadData.data.forEach(mergeOption);
 
                 sortOption();
-
                 updateGearDesignation();
                 updateGearBuildinType();
                 updateMotorDesignation();
@@ -301,27 +300,40 @@
 		
 		function updateMotorType() {
             // vm.gear.motorType = (vm.gear.motorDesignation && vm.gear.motorBuildinType) ? vm.gear.motorDesignation + '/' + vm.gear.motorBuildinType : '';
-            vm.gear.motorType = (vm.gear.motorDesignation && vm.gear.motorBuildinType == 'FG') ? vm.gear.motorDesignation : vm.gear.motorDesignation + '/' + vm.gear.motorBuildinType;
+            vm.gear.motorType = '';
+
+            if(vm.gear.motorDesignation) {
+                vm.gear.motorType = vm.gear.motorDesignation;
+
+                if(vm.gear.motorBuildinType && vm.gear.motorBuildinType !== 'FG') {
+                    vm.gear.motorType += '/' +vm.gear.motorBuildinType;
+                }
+            }
         }
         
         function gearFullOption() {
             var gearFullOption = '',
                 gearWithOption = '',
-                motorWithOption = '';
+                motorWithOption = '',
+                prefix;
             
             if (vm.gear.gearType) {
                 gearWithOption += vm.gear.gearType;
 
-                if (vm.gear.gearOption != '-') {
-                    gearWithOption += '/' + vm.gear.gearOption;
+                if (vm.gear.gearOption && vm.gear.gearOption != '-') {
+                    prefix = vm.gear.gearOption.indexOf('/') === -1 ? '/' : '';
+
+                    gearWithOption += prefix + vm.gear.gearOption;
                 }
             }
-
+            
             if (vm.gear.motorType) {
                 motorWithOption += vm.gear.motorType;
 
-                if (vm.gear.motorOption != '-') {
-                    motorWithOption += '/' + vm.gear.motorOption;
+                if (vm.gear.motorOption && vm.gear.motorOption != '-') {
+                    prefix = vm.gear.motorOption.indexOf('/') === -1 ? '/' : '';
+
+                    motorWithOption += prefix + vm.gear.motorOption;
                 }
             }
 
