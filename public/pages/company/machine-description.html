@@ -91,7 +91,7 @@
 						</tr>
 						<tr>
 							<td class="fontWeight-7 padding-xs">Type</td>
-							<td class="padding-xs">{{ vm.gear_data.gearType+vm.gear_data.motorType }}</td>
+							<td class="padding-xs">{{ vm.Gear.getFullType(vm.gearmotor) }}</td>
 						</tr>
 						<tr>
 							<td class="fontWeight-7 padding-xs">Power [KW]</td>
@@ -149,7 +149,7 @@
 							<td class="fontWeight-7 padding-xs">Layout No.</td>
 							<td class="padding-xs">{{ vm.gear_data.layoutno }}</td>
 						</tr>
-						<tr>
+						<!-- <tr>
 							<td class="fontWeight-7 padding-xs">Nameplate</td>
 							<td class="padding-xs">{{ vm.gear_data.nameplate }}</td>
 						</tr>
@@ -164,7 +164,7 @@
 						<tr>
 							<td class="fontWeight-7 padding-xs">PL</td>
 							<td class="padding-xs">{{ vm.gear_data.pl }}</td>
-						</tr>
+						</tr> -->
 
 						<tr>
 							<td class="fontWeight-7 padding-xs" style="vertical-align: top;">Images</td>

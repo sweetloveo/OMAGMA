@@ -5,9 +5,9 @@
 		.module('app')
 		.controller('machineDescriptionCtrl', machineDescriptionCtrl);
 
-		machineDescriptionCtrl.$inject = ['Auth','Users', '$scope', '$firebaseObject', '$firebaseArray', '$stateParams','$state','cfpLoadingBar'];
+		machineDescriptionCtrl.$inject = ['Auth','Users', 'Gear', '$scope', '$firebaseObject', '$firebaseArray', '$stateParams','$state','cfpLoadingBar'];
 
-	function machineDescriptionCtrl(Auth,Users , $scope, $firebaseObject, $firebaseArray, $stateParams,$state, cfpLoadingBar) {
+	function machineDescriptionCtrl(Auth, Users, Gear, $scope, $firebaseObject, $firebaseArray, $stateParams,$state, cfpLoadingBar) {
         cfpLoadingBar.start();
 		var vm = this;
 
@@ -22,7 +22,9 @@
         vm.addcu = addcu;
 		vm.gear = [];
 		vm.deletemachine = deletemachine;
-        vm.gear_data = {};
+		vm.gear_data = {};
+		vm.Gear = Gear;
+		vm.gearmotor = {};
 		$scope.machine_image = {};
 		vm.deleteGearDetail = deleteGearDetail;
 
@@ -89,7 +91,7 @@
             var obj = $firebaseObject(ref);
             return obj.$loaded()
                 .then(function(gearmotors) {
-                    console.log(gearmotors);
+					vm.gearmotor = gearmotors;
 
                     return gearmotors
                 });

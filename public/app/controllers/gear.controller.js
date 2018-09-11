@@ -5,7 +5,7 @@
 			.module('app')
 			.controller('gearCtrl', gearCtrl);
 
-	gearCtrl.$inject = ['$q','$scope','$state', 'Users', 'Auth', '$stateParams' ,'$firebaseArray','$firebaseObject','cfpLoadingBar','cfpLoadingBar'];
+	gearCtrl.$inject = ['$q','$scope','$state', 'Users', 'Gear', 'Auth', '$stateParams' ,'$firebaseArray','$firebaseObject','cfpLoadingBar','cfpLoadingBar'];
 
     /**
      * Object for mapping between options field and record field
@@ -34,7 +34,7 @@
         'motorOptionOption'                 :   'motorOption'
     };
 
-	function gearCtrl($q,$scope,$state, Users, Auth, $stateParams,$firebaseArray, $firebaseObject , cfpLoadingBar) {
+	function gearCtrl($q,$scope,$state, Users, Gear, Auth, $stateParams,$firebaseArray, $firebaseObject , cfpLoadingBar) {
         cfpLoadingBar.start();
 		var vm = this;
 		vm.company_id = $stateParams.id;
@@ -53,7 +53,7 @@
 		vm.updateMotorType = updateMotorType;
 		vm.selectstring = selectstring;
         vm.savegearmotor = savegearmotor;
-        vm.gearFullOption = gearFullOption;
+        vm.Gear = Gear;
 
         vm.loadData = { data:[] };
 
@@ -310,51 +310,5 @@
                 }
             }
         }
-        
-        function gearFullOption() {
-            var gearFullOption = '',
-                gearWithOption = '',
-                motorWithOption = '',
-                prefix;
-            
-            if (vm.gear.gearType) {
-                gearWithOption += vm.gear.gearType;
-
-                if (vm.gear.gearOption && vm.gear.gearOption != '-') {
-                    prefix = vm.gear.gearOption.indexOf('/') === -1 ? '/' : '';
-
-                    gearWithOption += prefix + vm.gear.gearOption;
-                }
-            }
-            
-            if (vm.gear.motorType) {
-                motorWithOption += vm.gear.motorType;
-
-                if (vm.gear.motorOption && vm.gear.motorOption != '-') {
-                    prefix = vm.gear.motorOption.indexOf('/') === -1 ? '/' : '';
-
-                    motorWithOption += prefix + vm.gear.motorOption;
-                }
-            }
-
-            if (gearWithOption.length) {
-                gearFullOption += gearWithOption;
-            }
-
-            if (motorWithOption.length) {
-                if (gearFullOption.length) {
-                    gearFullOption += ' ';
-                }
-                
-                gearFullOption += motorWithOption;
-            }
-
-            if (!gearFullOption.length) {
-                gearFullOption = '-';
-            }
-
-            return gearFullOption;
-        }
-
 	}
 })();

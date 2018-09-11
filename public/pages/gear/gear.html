@@ -61,7 +61,7 @@
 									{{ gear.driveType }}
 								</div>
 								<div class="col-xs-3 lh-3">
-									{{ gear.gearType + ' ' + gear.motorDesignation }}
+									{{ vm.Gear.getFullType(gear) }}
 								</div>
 								<div class="col-xs-2 lh-3">
 									{{ gear.motorPower }}

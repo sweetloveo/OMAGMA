@@ -5,9 +5,9 @@
 		.module('app')
 		.controller('machineAddCtrl', machineAddCtrl);
 
-	machineAddCtrl.$inject = ['$firebaseObject', '$firebaseArray', '$stateParams','$state','cfpLoadingBar'];
+	machineAddCtrl.$inject = ['Gear', '$firebaseObject', '$firebaseArray', '$stateParams','$state','cfpLoadingBar'];
 
-	function machineAddCtrl($firebaseObject, $firebaseArray, $stateParams,$state, cfpLoadingBar) {
+	function machineAddCtrl(Gear, $firebaseObject, $firebaseArray, $stateParams,$state, cfpLoadingBar) {
         cfpLoadingBar.start();
 		var vm = this;
 
@@ -20,9 +20,10 @@
 		vm.editMachine = editMachine;
 
 		vm.addMachine = addMachine;
+		vm.Gear = Gear;
 
 		getCurrentSelected();
-		console.log(vm);
+
 		if (vm.machine_id)
 		{
             var ref = firebase.database().ref('/GearmotorMachine').child($stateParams.machineId);

@@ -5,12 +5,20 @@
 		.module('app')
 		.controller('machineCtrl', machineCtrl);
 
-	machineCtrl.$inject = ['Users','$firebaseObject', '$firebaseArray', '$stateParams','Auth','cfpLoadingBar'];
+	machineCtrl.$inject = [
+		'Users',
+		'$firebaseObject',
+		'$firebaseArray',
+		'$stateParams',
+		'Auth',
+		'Gear',
+		'cfpLoadingBar'
+	];
 
-	function machineCtrl(Users,$firebaseObject, $firebaseArray, $stateParams,Auth, cfpLoadingBar) {
+	function machineCtrl(Users, $firebaseObject, $firebaseArray, $stateParams,Auth, Gear, cfpLoadingBar) {
         cfpLoadingBar.start();
 		var vm = this;
-
+		
 		vm.company_id = $stateParams.id;
 		vm.group_id = $stateParams.group;
 		vm.selected = $stateParams.selected;
@@ -21,6 +29,7 @@
 		vm.loading = false;
 		vm.hasGearMotors = true;
 		vm.setGearOrderBy = setGearOrderBy;
+		vm.Gear = Gear;
 
         Auth.$onAuthStateChanged(function(authData) {
 			vm.authData = authData;
@@ -84,7 +93,7 @@
 			{
 				if (vm.gearmotors[loop].data.gearmotor.length) {
 					var a = getGearttype(vm.gearmotors[loop].data.gearmotor);
-
+					
 					a.then(function (value) {
 						vm.gearmotors[loop].data.gearType = value;
 					});

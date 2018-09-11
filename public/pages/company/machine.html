@@ -136,7 +136,7 @@
 											<span>{{ gearmotor.data.machineno }}</span>
 										</td>
 										<td class="padding-s">
-											<span>{{ gearmotor.data.gearType.gearType+gearmotor.data.gearType.motorDesignation}}</span>
+											<span>{{ vm.Gear.getFullType(gearmotor.data.gearType) }}</span>
 										</td>
 										<td class="padding-s">
 											<span>{{ gearmotor.data.power }}</span>
